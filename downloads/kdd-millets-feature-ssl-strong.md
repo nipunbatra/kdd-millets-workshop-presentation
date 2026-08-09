@@ -421,13 +421,11 @@ transition: fade
       <div class="fixed-list"><span>dataset</span><span>backbone</span><span>grouped setting</span></div>
       <small>same task and evaluation condition</small>
     </div>
-    <div class="comparison-arrow">→</div>
     <div class="comparison-field methods" data-marpit-fragment>
       <div class="comparison-label">vary one factor · pretraining method</div>
       <div class="method-group"><b>conventional SSL · 6</b><div class="method-chip-grid baselines"><span>SimCLR</span><span>BYOL</span><span>Barlow Twins</span><span>TS2Vec</span><span>SimMTM</span><span>MPM</span></div></div>
       <div class="method-group feature"><b>feature-target SSL · 4</b><div class="method-chip-grid targets"><span>TSFEL15</span><span>TSFEL30</span><span>TSFEL45</span><span>TSFEL90</span></div></div>
     </div>
-    <div class="comparison-arrow">→</div>
     <div class="comparison-field metrics" data-marpit-fragment>
       <div class="comparison-label">score with the task metric</div>
       <div class="metric-row"><span>PPG-DaLiA</span><b>MAE ↓</b></div>
