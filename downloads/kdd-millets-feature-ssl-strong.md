@@ -164,26 +164,43 @@ footer: KDD MILETS 2026 · Feature-informed SSL
 
 ---
 
-<div class="kicker">Gap · augmentation assumptions</div>
+<!-- _class: downstream-augmentation -->
 
-## An augmentation is a hypothesis about which information the task may ignore
+<div class="kicker">Design test · task-specific invariance</div>
+
+## A transform is valid only if it preserves downstream evidence
 
 <div class="body top">
   <img class="real-augmentation" src="assets/augmentation-real-ppg.svg" alt="Authentic PPG-DaLiA window under reversal, masking, and scaling plus jitter">
-  <div class="gap-summary">
-    <div><b>reversal</b>temporal progression</div>
-    <div><b>masking</b>event presence</div>
-    <div><b>scale + jitter</b>amplitude and local morphology</div>
+  <div class="application-strip">
+    <div class="application-item">
+      <b>PPG-DaLiA · heart-rate regression</b>
+      <strong>Preserve beat interval and dominant frequency</strong>
+      <span>Reject T if beat timing or dominant-rate evidence becomes unreliable.</span>
+    </div>
+    <div class="application-item">
+      <b>HHAR · activity recognition</b>
+      <strong>Preserve amplitude, periodicity and transitions</strong>
+      <span>Reject T if cadence, intensity or a transition needed for classification is distorted.</span>
+    </div>
+    <div class="application-item">
+      <b>Illustrative extension · event / anomaly detection</b>
+      <strong>Preserve transient presence, duration and order</strong>
+      <span>Reject T if it masks, truncates or reorders the candidate event.</span>
+    </div>
   </div>
+  <div class="augmentation-rule"><b>Decision rule</b><span>Admit T as a positive-pair transform only when <i>y(x) = y(T(x))</i> and the evidence required for y remains physically plausible.</span></div>
 </div>
 
-<div class="source">Real PPG-DaLiA samples; identical axes across panels. The operation may be useful, but its induced invariance is not universal.</div>
+<div class="source">Authentic PPG-DaLiA example. Heart-rate and activity tasks are evaluated in this study; event detection is an illustrative extension.</div>
 
 <!--
 [Sources]
 - Supplied manuscript, p. 1, Abstract and §1, motivation concerning jitter, scaling, masking, reversal, and task-mismatched invariance.
+- Supplied manuscript, p. 3, §3.4: the evaluated downstream tasks are heart-rate regression on PPG-DaLiA and activity recognition on HHAR.
 - Real signal: PPG-DaLiA Subject 1, samples 73,120–73,375, 8 s at 32 Hz, UCI DOI 10.24432/C53890; Edge Impulse subset documentation: https://docs.edgeimpulse.com/tutorials/end-to-end/hr-hrv-estimation .
-- Exact operations: reverse sample order; zero samples 96–135 (3.00 ≤ t < 4.25 s); and 1.25 z(t) + 0.15 sin(2π·6t) after linear detrending and display scaling. All panels use the same 0–8 s and −3.25–3.25 axes.
+- Exact operations: x̃(t) denotes the linearly detrended, within-window-scaled display signal; reverse sample order; zero samples 96–135 (3.00 ≤ t < 4.25 s); and 1.25 x̃(t) + 0.15 sin(2π·6t). All panels use the same 0–8 s and −3.25–3.25 axes.
+- The downstream preservation test is explanatory and conditional: heart-rate regression requires recoverable rate/timing evidence; activity recognition can depend on amplitude, periodicity, and temporal transitions; event/anomaly detection is included only as an illustrative downstream extension and was not evaluated in the paper.
 - The paper motivates, but does not directly test, semantic loss caused by these operations. No claim is made that every transformed window changes its downstream label.
 -->
 

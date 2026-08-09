@@ -1,14 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="535" viewBox="0 0 1200 535">
 
   <style>
-    .kicker{font:600 12px 'JetBrains Mono','SFMono-Regular',monospace;letter-spacing:1.2px;fill:#6D7881}
+    .kicker{font:600 15px 'JetBrains Mono','SFMono-Regular',monospace;letter-spacing:1.2px;fill:#6D7881}
     .title{font:700 21px 'Work Sans','Avenir Next',Arial,sans-serif;fill:#17212B}
     .big{font:700 30px 'Work Sans','Avenir Next',Arial,sans-serif;fill:#17212B}
-    .body{font:500 15px 'Work Sans','Avenir Next',Arial,sans-serif;fill:#40505D}
-    .small{font:500 12px 'Work Sans','Avenir Next',Arial,sans-serif;fill:#6D7881}
-    .mono{font:500 12px 'JetBrains Mono','SFMono-Regular',monospace;fill:#40505D}
+    .body{font:500 18px 'Work Sans','Avenir Next',Arial,sans-serif;fill:#40505D}
+    .small{font:500 14px 'Work Sans','Avenir Next',Arial,sans-serif;fill:#6D7881}
+    .mono{font:500 18px 'JetBrains Mono','SFMono-Regular',monospace;fill:#40505D}
     .metric{font:700 17px 'JetBrains Mono','SFMono-Regular',monospace;fill:#17212B}
-    .axis{font:500 10px 'JetBrains Mono','SFMono-Regular',monospace;fill:#6D7881}
+    .axis{font:500 13px 'JetBrains Mono','SFMono-Regular',monospace;fill:#6D7881}
     .card{fill:#FFFFFF;stroke:#D9DEE2;stroke-width:1.2}
     .grid{fill:none;stroke:#EDF0F1;stroke-width:1}
     .axisline{fill:none;stroke:#D9DEE2;stroke-width:1.1}
@@ -21,7 +21,7 @@
 <text x="1165.00" y="24.00" class="small" text-anchor="end" >linear detrend + within-window scale</text>
 <rect x="35" y="44" width="550" height="216" rx="16" class="card"/>
 <text x="57.00" y="75.00" class="kicker" text-anchor="start" >ORIGINAL</text>
-<text x="563.00" y="75.00" class="mono" text-anchor="end" >z(t)</text>
+<text x="563.00" y="75.00" class="mono" text-anchor="end" >x̃(t)</text>
 <path d="M57.00,190.00H563.00" class="axisline"/>
 <path d="M57.00,99.00V190.00" class="grid"/>
 <text x="57.00" y="206.00" class="axis" text-anchor="middle" >0</text>
@@ -35,7 +35,7 @@
 <text x="74.00" y="235.00" class="body" text-anchor="start" >reference chronology</text>
 <rect x="615" y="44" width="550" height="216" rx="16" class="card"/>
 <text x="637.00" y="75.00" class="kicker" text-anchor="start" >REVERSAL</text>
-<text x="1143.00" y="75.00" class="mono" text-anchor="end" >z(7.96875 − t)</text>
+<text x="1143.00" y="75.00" class="mono" text-anchor="end" >x̃(7.96875 − t)</text>
 <path d="M637.00,190.00H1143.00" class="axisline"/>
 <path d="M637.00,99.00V190.00" class="grid"/>
 <text x="637.00" y="206.00" class="axis" text-anchor="middle" >0</text>
@@ -49,7 +49,7 @@
 <text x="654.00" y="235.00" class="body" text-anchor="start" >early ↔ late order exchanged</text>
 <rect x="35" y="284" width="550" height="216" rx="16" class="card"/>
 <text x="57.00" y="315.00" class="kicker" text-anchor="start" >DETERMINISTIC MASK</text>
-<text x="563.00" y="315.00" class="mono" text-anchor="end" >z(t)=0 for 3.00 ≤ t &lt; 4.25 s</text>
+<text x="563.00" y="315.00" class="mono" text-anchor="end" >x̃(t)=0 for 3.00 ≤ t &lt; 4.25 s</text>
 <path d="M57.00,430.00H563.00" class="axisline"/>
 <path d="M57.00,339.00V430.00" class="grid"/>
 <text x="57.00" y="446.00" class="axis" text-anchor="middle" >0</text>
@@ -64,7 +64,7 @@
 <text x="74.00" y="475.00" class="body" text-anchor="start" >1.25 s of observed waveform removed</text>
 <rect x="615" y="284" width="550" height="216" rx="16" class="card"/>
 <text x="637.00" y="315.00" class="kicker" text-anchor="start" >SCALE + JITTER</text>
-<text x="1143.00" y="315.00" class="mono" text-anchor="end" >1.25z(t) + 0.15 sin(2π·6t)</text>
+<text x="1143.00" y="315.00" class="mono" text-anchor="end" >1.25x̃(t) + 0.15 sin(2π·6t)</text>
 <path d="M637.00,430.00H1143.00" class="axisline"/>
 <path d="M637.00,339.00V430.00" class="grid"/>
 <text x="637.00" y="446.00" class="axis" text-anchor="middle" >0</text>
