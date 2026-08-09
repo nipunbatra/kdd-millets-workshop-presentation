@@ -118,24 +118,48 @@ footer: KDD MILETS 2026 · Feature-informed SSL
 -->
 
 ---
+<!-- _class: invariance-failure -->
 
-<div class="kicker">Counterexample · temporal order</div>
+<div class="kicker">Failure mode · task-mismatched invariance</div>
 
-## Reversal preserves values—not temporal direction
+## When a transformation changes signal semantics, invariance suppresses target-relevant structure
 
-<div class="body top">
-  <img class="real-augmentation" src="assets/ppg-temporal-reversal.svg" alt="Authentic PPG-DaLiA pulse segment beside its exact time reversal">
-  <div class="takeaway">The marginal values are unchanged. What changes is the direction in which local events unfold.</div>
+<div class="invariance-layout">
+  <div class="invariance-visual">
+    <div class="conceptual-label">conceptual illustration · authentic PPG example follows</div>
+    <img src="assets/paired-view-invariance-failure-imagegen-v1.png" alt="Conceptual contrast between a transformed visual object and a transformed physiological time series">
+    <div class="invariance-captions"><span>visual views: object identity can persist</span><span>signal views: temporal meaning can change</span></div>
+  </div>
+  <div class="invariance-logic">
+    <div class="logic-step">
+      <div class="logic-label">paired-view objective</div>
+      <div class="logic-equation">z(x) ≈ z(T(x))</div>
+      <p>Encourages reduced sensitivity to view-specific differences.</p>
+    </div>
+    <div class="logic-step">
+      <div class="logic-label">required assumption</div>
+      <div class="logic-equation">y(x) = y(T(x))</div>
+      <p>Requires the transformation to preserve the task target.</p>
+    </div>
+    <div class="logic-step failure">
+      <div class="logic-label">when the assumption fails</div>
+      <div class="logic-equation">y(x) ≠ y(T(x))</div>
+      <p>Target-relevant evidence can be attenuated.</p>
+    </div>
+  </div>
 </div>
 
-<div class="source">Authentic PPG-DaLiA samples; exact reversal on an identical time and amplitude scale.</div>
+<div class="invariance-consequence"><b>For time series, that discarded difference can be the target:</b> temporal order · event presence · amplitude · local morphology</div>
+
+<div class="source">Conceptual ImageGen illustration; the next slide applies exact transformations to an authentic PPG-DaLiA window.</div>
 
 <!--
 [Sources]
-- Real signal: PPG-DaLiA Subject 1, samples 73,120–73,375, 2018-06-29 09:22:57–09:23:04.968750, 32 Hz, from the Edge Impulse subset of the UCI dataset, DOI 10.24432/C53890, CC BY 4.0; subset documentation: https://docs.edgeimpulse.com/tutorials/end-to-end/hr-hrv-estimation .
-- Transformation: exact sample-order reversal on an identical axis; no samples are generated or edited.
-- Concept adapted from the temporal-reversal motivation in the supplied student deck, slides 8–9, but the untraceable MESA screenshot was not reused.
-- Scientific boundary: the slide demonstrates order-sensitive morphology. It does not claim that reversal changes the heart-rate label for this window, nor that the paper experimentally tested this augmentation.
+- Supplied workshop manuscript, p. 1, Abstract and Introduction: paired-view methods train representations of transformed views to remain similar; time-series transformations can alter order, continuity, amplitude, frequency structure, or physical coherence.
+- Concept and comparison adapted from the supplied student deck, slides 7–10. The original untraceable MESA screenshot is not reused.
+- Notation is explanatory: z denotes the learned representation, T the augmentation, and y the downstream target. The validity condition y(x)=y(T(x)) states the task-specific invariance required by the paired-view objective.
+- The conceptual illustration was generated with OpenAI ImageGen on 2026-08-09. It is not a dataset record or empirical result; the exact prompt is recorded in `provenance/imagegen-invariance-prompt.txt`.
+- Scientific boundary: the paper motivates this failure mode but does not directly test whether each augmentation changes a downstream label. The claim is conditional, not universal.
 -->
 
 ---
