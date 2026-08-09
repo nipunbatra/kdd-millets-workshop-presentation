@@ -363,36 +363,50 @@ footer: KDD MILETS 2026 · Feature-informed SSL
 
 ---
 
-<div class="kicker">Evaluation · matched comparisons</div>
+<!-- _class: experiment-grid-slide -->
+<div class="kicker">Evaluation · full experimental grid</div>
 
-## The comparison spans 1,600 runs across matched settings
+## The 1,600-run grid enumerates every evaluated combination
 
-<div class="body top">
-  <div class="eval-equation">
-    <div><div class="n">2</div><span class="lab">datasets</span></div><div class="times">×</div>
-    <div><div class="n">4</div><span class="lab">backbones</span></div><div class="times">×</div>
-    <div><div class="n methods">10</div><span class="lab">methods</span></div><div class="times">×</div>
-    <div><div class="n">20</div><span class="lab">configurations</span></div>
+<div class="body top experiment-grid-body">
+  <div class="experiment-inventory">
+    <div class="experiment-factor tasks">
+      <div class="factor-head"><div class="factor-count">2</div><div><div class="factor-label">datasets / tasks</div><div class="factor-sublabel">wearable benchmarks</div></div></div>
+      <div class="task-entry"><strong>PPG-DaLiA</strong><span>heart-rate regression</span><small>MAE ↓ · 15 participants · PPG + ACC</small></div>
+      <div class="task-entry"><strong>HHAR</strong><span>6-class activity recognition</span><small>macro F1 ↑ · 9 users · ACC + GYR</small></div>
+    </div>
+    <div class="experiment-factor backbones">
+      <div class="factor-head"><div class="factor-count">4</div><div><div class="factor-label">encoder backbones</div><div class="factor-sublabel">one per run</div></div></div>
+      <ul class="factor-list"><li>MLP</li><li>MLP-Mixer</li><li>1D ResNet-18</li><li>PatchTST</li></ul>
+    </div>
+    <div class="experiment-factor methods">
+      <div class="factor-head"><div class="factor-count">10</div><div><div class="factor-label">pretraining methods</div><div class="factor-sublabel">six baselines + four feature targets</div></div></div>
+      <div class="method-family"><div class="family-label">conventional SSL · 6</div><div class="method-list"><span>SimCLR</span><span>BYOL</span><span>Barlow Twins</span><span>TS2Vec</span><span>SimMTM</span><span>MPM</span></div></div>
+      <div class="method-family feature-target"><div class="family-label">feature-target SSL · 4</div><div class="method-list"><span>TSFEL15</span><span>TSFEL30</span><span>TSFEL45</span><span>TSFEL90</span></div></div>
+    </div>
+    <div class="experiment-factor settings">
+      <div class="factor-head"><div class="factor-count">20</div><div><div class="factor-label">grouped settings</div><div class="factor-sublabel">per dataset–backbone–method</div></div></div>
+      <div class="config-group"><div class="config-title"><b>12</b><span>LR robustness</span></div><p>2 transfer × 2 pretrain LR × 3 fine-tune LR</p><small>frozen / unfrozen · 10⁻³ / 10⁻² · 10⁻⁵ / 10⁻⁴ / 10⁻³</small></div>
+      <div class="config-group"><div class="config-title"><b>4</b><span>label scarcity</span></div><p>2 label fractions × 2 transfer regimes</p><small>5% / 100% · frozen / unfrozen</small></div>
+      <div class="config-group"><div class="config-title"><b>4</b><span>head / pooling</span></div><p>2 prediction heads × 2 pooling rules</p><small>linear / MLP · mean / max</small></div>
+      <div class="grouped-caveat">12 + 4 + 4 grouped studies—not one full-factorial sweep</div>
+    </div>
   </div>
-  <div class="eval-total">= 1,600 training runs</div>
-  <div class="rank-flow">
-    <div class="rank-step"><div class="no">01 · MATCH</div><h3>Hold the setting fixed</h3><p>Dataset, backbone, transfer regime, label fraction, and hyperparameters.</p></div>
-    <div class="rank-arrow">→</div>
-    <div class="rank-step"><div class="no">02 · RANK</div><h3>Order the ten methods</h3><p>Macro F1 for HHAR; MAE for PPG-DaLiA.</p></div>
-    <div class="rank-arrow">→</div>
-    <div class="rank-step"><div class="no">03 · AGGREGATE</div><h3>Average within task</h3><p>80 matched settings per method and dataset; lower mean rank is better.</p></div>
-  </div>
-  <div class="eval-note"><span>20 configurations = 12 learning-rate robustness + 4 label-scarcity + 4 head/pooling</span><span>160 runs per method across both tasks</span></div>
+  <div class="grid-synthesis"><div class="grid-equation"><b>2</b> datasets × <b>4</b> backbones × <b>10</b> methods × <b>(12 + 4 + 4)</b> settings = <strong>1,600 runs</strong></div><div class="grid-denominator">160 runs per method · 80 matched settings per method and task</div></div>
+  <div class="grid-protocol"><b>Matched comparison:</b> hold dataset + backbone + setting fixed → rank all ten methods on the task metric → average ranks within task.</div>
 </div>
 
-<div class="source">Source: supplied manuscript, Table 1 and §3.3–3.5.</div>
+<div class="source">Source: supplied manuscript, Table 1 and §3.3–3.5. Grouped studies are additive, not a full-factorial sweep.</div>
 
 <!--
 [Sources]
-- Supplied workshop manuscript, p. 3, Table 1; pp. 3–4, §3.3–3.5.
-- Arithmetic: 2 datasets × 4 backbones × 10 methods × 20 grouped configurations = 1,600 runs.
-- Each method contributes 160 runs overall and 80 per dataset. Task-specific mean ranks in Tables 2–3 therefore aggregate 80 matched settings per method.
-- The 20 settings are 12 + 4 + 4 grouped studies, not a full factorial design.
+- Supplied workshop manuscript, p. 3, Table 1 and §3.3–3.5: 2 datasets × 4 backbones × 10 methods × 20 grouped configurations = 1,600 training runs.
+- Datasets/tasks: PPG-DaLiA heart-rate regression using retained PPG and accelerometer inputs, evaluated by MAE; HHAR six-class activity recognition using accelerometer and gyroscope inputs, evaluated by macro F1. Cohort counts are 15 participants and 9 users, respectively; Reiss et al. 2019, DOI 10.3390/s19143079 / UCI DOI 10.24432/C53890; Stisen et al. 2015 / UCI DOI 10.24432/C5689X.
+- Backbones are alternatives used in separate runs: MLP, MLP-Mixer, 1D ResNet-18, and PatchTST.
+- The ten methods are Barlow Twins, BYOL, MPM, SimCLR, SimMTM, TS2Vec, TSFEL15, TSFEL30, TSFEL45, and TSFEL90.
+- Table 1 defines three additive studies per dataset–backbone–method pair: 12 learning-rate robustness settings, 4 label-scarcity settings, and 4 head/pooling settings. These are grouped studies, not a Cartesian product across every listed factor.
+- Each method contributes 160 runs overall and 80 matched settings per task. Within a matched setting, methods are ranked by macro F1 for HHAR or MAE for PPG-DaLiA; ranks are averaged separately by task and lower mean rank is better.
+- The supplied student deck slide 18 informed the factor-ordering concept; this flat inventory was rebuilt in the current Marp visual language.
 -->
 
 ---
