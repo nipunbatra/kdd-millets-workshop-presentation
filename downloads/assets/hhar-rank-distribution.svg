@@ -12,120 +12,132 @@
     .panel { font-size: 24px; font-weight: 700; }
     .row-label { font-size: 17px; font-weight: 700; letter-spacing: .06em; }
   </style>
+  <style>.rank-value { font-size: 18px; font-weight: 700; font-variant-numeric: tabular-nums; }</style>
   <g aria-label="rank axis">
   <text x="270" y="28" class="axis-label">Average rank · 1 = best</text>
   <path d="M 363 38 H 285" fill="none" stroke="#0B6B53" stroke-width="2" stroke-linecap="round"/>
   <path d="M 285 38 l 9 -5 v 10 z" fill="#0B6B53"/>
   <text x="375" y="43" class="small" fill="#0B6B53">better</text>
-  <text x="1207" y="62" text-anchor="middle" class="axis" font-weight="700">MEAN</text>
+  <text x="1188" y="62" text-anchor="middle" class="axis" font-weight="700">MEAN RANK</text>
   <line x1="270.00" y1="76" x2="270.00" y2="596" stroke="#DDE5E2" stroke-width="2" stroke-dasharray="0"/>
   <text x="270.00" y="62" text-anchor="middle" class="axis">1</text>
-  <line x1="363.33" y1="76" x2="363.33" y2="596" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
-  <text x="363.33" y="62" text-anchor="middle" class="axis">2</text>
-  <line x1="456.67" y1="76" x2="456.67" y2="596" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
-  <text x="456.67" y="62" text-anchor="middle" class="axis">3</text>
-  <line x1="550.00" y1="76" x2="550.00" y2="596" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
-  <text x="550.00" y="62" text-anchor="middle" class="axis">4</text>
-  <line x1="643.33" y1="76" x2="643.33" y2="596" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
-  <text x="643.33" y="62" text-anchor="middle" class="axis">5</text>
-  <line x1="736.67" y1="76" x2="736.67" y2="596" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
-  <text x="736.67" y="62" text-anchor="middle" class="axis">6</text>
-  <line x1="830.00" y1="76" x2="830.00" y2="596" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
-  <text x="830.00" y="62" text-anchor="middle" class="axis">7</text>
-  <line x1="923.33" y1="76" x2="923.33" y2="596" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
-  <text x="923.33" y="62" text-anchor="middle" class="axis">8</text>
-  <line x1="1016.67" y1="76" x2="1016.67" y2="596" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
-  <text x="1016.67" y="62" text-anchor="middle" class="axis">9</text>
-  <line x1="1110.00" y1="76" x2="1110.00" y2="596" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
-  <text x="1110.00" y="62" text-anchor="middle" class="axis">10</text>
+  <line x1="361.11" y1="76" x2="361.11" y2="596" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
+  <text x="361.11" y="62" text-anchor="middle" class="axis">2</text>
+  <line x1="452.22" y1="76" x2="452.22" y2="596" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
+  <text x="452.22" y="62" text-anchor="middle" class="axis">3</text>
+  <line x1="543.33" y1="76" x2="543.33" y2="596" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
+  <text x="543.33" y="62" text-anchor="middle" class="axis">4</text>
+  <line x1="634.44" y1="76" x2="634.44" y2="596" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
+  <text x="634.44" y="62" text-anchor="middle" class="axis">5</text>
+  <line x1="725.56" y1="76" x2="725.56" y2="596" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
+  <text x="725.56" y="62" text-anchor="middle" class="axis">6</text>
+  <line x1="816.67" y1="76" x2="816.67" y2="596" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
+  <text x="816.67" y="62" text-anchor="middle" class="axis">7</text>
+  <line x1="907.78" y1="76" x2="907.78" y2="596" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
+  <text x="907.78" y="62" text-anchor="middle" class="axis">8</text>
+  <line x1="998.89" y1="76" x2="998.89" y2="596" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
+  <text x="998.89" y="62" text-anchor="middle" class="axis">9</text>
+  <line x1="1090.00" y1="76" x2="1090.00" y2="596" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
+  <text x="1090.00" y="62" text-anchor="middle" class="axis">10</text>
   </g>
   <rect x="16" y="97" width="1238" height="42" rx="9" fill="#EDF7F3"/>
   <text x="24" y="125" class="method method-feature">TSFEL-45</text>
-  <line x1="312.00" y1="118" x2="1005.00" y2="118" stroke="#0B6B53" stroke-width="2.2" stroke-linecap="round"/>
-  <line x1="312.00" y1="110" x2="312.00" y2="126" stroke="#0B6B53" stroke-width="2.2"/>
-  <line x1="1005.00" y1="110" x2="1005.00" y2="126" stroke="#0B6B53" stroke-width="2.2"/>
-  <rect x="480.00" y="107" width="210.00" height="22" rx="4" fill="#CFE9DF" stroke="#0B6B53" stroke-width="2.2"/>
-  <line x1="564.00" y1="106" x2="564.00" y2="130" stroke="#D56B2D" stroke-width="3"/>
-  <circle cx="527.60" cy="118" r="6.2" fill="#0B6B53" stroke="#FFFFFF" stroke-width="2.2"/>
-  <text x="1207" y="124" text-anchor="middle" class="value" fill="#0B6B53">3.76</text>
+  <line x1="311.00" y1="118" x2="987.50" y2="118" stroke="#0B6B53" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="311.00" y1="110" x2="311.00" y2="126" stroke="#0B6B53" stroke-width="2.2"/>
+  <line x1="987.50" y1="110" x2="987.50" y2="126" stroke="#0B6B53" stroke-width="2.2"/>
+  <rect x="475.00" y="107" width="205.00" height="22" rx="4" fill="#CFE9DF" stroke="#0B6B53" stroke-width="2.2"/>
+  <line x1="557.00" y1="106" x2="557.00" y2="130" stroke="#D56B2D" stroke-width="3"/>
+  <circle cx="521.47" cy="118" r="6.2" fill="#0B6B53" stroke="#FFFFFF" stroke-width="2.2"/>
+  <rect x="1144" y="102" width="88" height="32" rx="8" fill="#FFFFFF" fill-opacity="0.88"/>
+  <text x="1188" y="125" text-anchor="middle" class="rank-value" fill="#0B6B53">3.76</text>
   <rect x="16" y="147" width="1238" height="42" rx="9" fill="#EDF7F3"/>
   <text x="24" y="175" class="method method-feature">TSFEL-90</text>
-  <line x1="322.50" y1="168" x2="795.00" y2="168" stroke="#0B6B53" stroke-width="2.2" stroke-linecap="round"/>
-  <line x1="322.50" y1="160" x2="322.50" y2="176" stroke="#0B6B53" stroke-width="2.2"/>
-  <line x1="795.00" y1="160" x2="795.00" y2="176" stroke="#0B6B53" stroke-width="2.2"/>
-  <rect x="553.50" y="157" width="202.12" height="22" rx="4" fill="#CFE9DF" stroke="#0B6B53" stroke-width="2.2"/>
-  <line x1="690.00" y1="156" x2="690.00" y2="180" stroke="#D56B2D" stroke-width="3"/>
-  <circle cx="584.53" cy="168" r="6.2" fill="#0B6B53" stroke="#FFFFFF" stroke-width="2.2"/>
-  <text x="1207" y="174" text-anchor="middle" class="value" fill="#0B6B53">4.37</text>
+  <line x1="321.25" y1="168" x2="782.50" y2="168" stroke="#0B6B53" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="321.25" y1="160" x2="321.25" y2="176" stroke="#0B6B53" stroke-width="2.2"/>
+  <line x1="782.50" y1="160" x2="782.50" y2="176" stroke="#0B6B53" stroke-width="2.2"/>
+  <rect x="546.75" y="157" width="197.31" height="22" rx="4" fill="#CFE9DF" stroke="#0B6B53" stroke-width="2.2"/>
+  <line x1="680.00" y1="156" x2="680.00" y2="180" stroke="#D56B2D" stroke-width="3"/>
+  <circle cx="577.04" cy="168" r="6.2" fill="#0B6B53" stroke="#FFFFFF" stroke-width="2.2"/>
+  <rect x="1144" y="152" width="88" height="32" rx="8" fill="#FFFFFF" fill-opacity="0.88"/>
+  <text x="1188" y="175" text-anchor="middle" class="rank-value" fill="#0B6B53">4.37</text>
   <text x="24" y="225" class="method method-baseline">Barlow Twins</text>
-  <line x1="270.00" y1="218" x2="1110.00" y2="218" stroke="#6F8290" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="270.00" y1="218" x2="1090.00" y2="218" stroke="#6F8290" stroke-width="2.2" stroke-linecap="round"/>
   <line x1="270.00" y1="210" x2="270.00" y2="226" stroke="#6F8290" stroke-width="2.2"/>
-  <line x1="1110.00" y1="210" x2="1110.00" y2="226" stroke="#6F8290" stroke-width="2.2"/>
-  <rect x="354.00" y="207" width="546.00" height="22" rx="4" fill="#E6EBEF" stroke="#6F8290" stroke-width="2.2"/>
-  <line x1="553.50" y1="206" x2="553.50" y2="230" stroke="#D56B2D" stroke-width="3"/>
-  <circle cx="590.13" cy="218" r="6.2" fill="#6F8290" stroke="#FFFFFF" stroke-width="2.2"/>
-  <text x="1207" y="224" text-anchor="middle" class="value" fill="#6F8290">4.43</text>
+  <line x1="1090.00" y1="210" x2="1090.00" y2="226" stroke="#6F8290" stroke-width="2.2"/>
+  <rect x="352.00" y="207" width="533.00" height="22" rx="4" fill="#E6EBEF" stroke="#6F8290" stroke-width="2.2"/>
+  <line x1="546.75" y1="206" x2="546.75" y2="230" stroke="#D56B2D" stroke-width="3"/>
+  <circle cx="582.51" cy="218" r="6.2" fill="#6F8290" stroke="#FFFFFF" stroke-width="2.2"/>
+  <rect x="1144" y="202" width="88" height="32" rx="8" fill="#FFFFFF" fill-opacity="0.88"/>
+  <text x="1188" y="225" text-anchor="middle" class="rank-value" fill="#6F8290">4.43</text>
   <rect x="16" y="247" width="1238" height="42" rx="9" fill="#F7F9F8"/>
   <text x="24" y="275" class="method method-baseline">SimCLR</text>
-  <line x1="270.00" y1="268" x2="1110.00" y2="268" stroke="#6F8290" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="270.00" y1="268" x2="1090.00" y2="268" stroke="#6F8290" stroke-width="2.2" stroke-linecap="round"/>
   <line x1="270.00" y1="260" x2="270.00" y2="276" stroke="#6F8290" stroke-width="2.2"/>
-  <line x1="1110.00" y1="260" x2="1110.00" y2="276" stroke="#6F8290" stroke-width="2.2"/>
-  <rect x="270.00" y="257" width="735.00" height="22" rx="4" fill="#E6EBEF" stroke="#6F8290" stroke-width="2.2"/>
-  <line x1="648.00" y1="256" x2="648.00" y2="280" stroke="#D56B2D" stroke-width="3"/>
-  <circle cx="590.13" cy="268" r="6.2" fill="#6F8290" stroke="#FFFFFF" stroke-width="2.2"/>
-  <text x="1207" y="274" text-anchor="middle" class="value" fill="#6F8290">4.43</text>
+  <line x1="1090.00" y1="260" x2="1090.00" y2="276" stroke="#6F8290" stroke-width="2.2"/>
+  <rect x="270.00" y="257" width="717.50" height="22" rx="4" fill="#E6EBEF" stroke="#6F8290" stroke-width="2.2"/>
+  <line x1="639.00" y1="256" x2="639.00" y2="280" stroke="#D56B2D" stroke-width="3"/>
+  <circle cx="582.51" cy="268" r="6.2" fill="#6F8290" stroke="#FFFFFF" stroke-width="2.2"/>
+  <rect x="1144" y="252" width="88" height="32" rx="8" fill="#FFFFFF" fill-opacity="0.88"/>
+  <text x="1188" y="275" text-anchor="middle" class="rank-value" fill="#6F8290">4.43</text>
   <rect x="16" y="297" width="1238" height="42" rx="9" fill="#EDF7F3"/>
   <text x="24" y="325" class="method method-feature">TSFEL-30</text>
-  <line x1="312.00" y1="318" x2="1005.00" y2="318" stroke="#0B6B53" stroke-width="2.2" stroke-linecap="round"/>
-  <line x1="312.00" y1="310" x2="312.00" y2="326" stroke="#0B6B53" stroke-width="2.2"/>
-  <line x1="1005.00" y1="310" x2="1005.00" y2="326" stroke="#0B6B53" stroke-width="2.2"/>
-  <rect x="469.50" y="307" width="388.50" height="22" rx="4" fill="#CFE9DF" stroke="#0B6B53" stroke-width="2.2"/>
-  <line x1="690.00" y1="306" x2="690.00" y2="330" stroke="#D56B2D" stroke-width="3"/>
-  <circle cx="602.27" cy="318" r="6.2" fill="#0B6B53" stroke="#FFFFFF" stroke-width="2.2"/>
-  <text x="1207" y="324" text-anchor="middle" class="value" fill="#0B6B53">4.56</text>
+  <line x1="311.00" y1="318" x2="987.50" y2="318" stroke="#0B6B53" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="311.00" y1="310" x2="311.00" y2="326" stroke="#0B6B53" stroke-width="2.2"/>
+  <line x1="987.50" y1="310" x2="987.50" y2="326" stroke="#0B6B53" stroke-width="2.2"/>
+  <rect x="464.75" y="307" width="379.25" height="22" rx="4" fill="#CFE9DF" stroke="#0B6B53" stroke-width="2.2"/>
+  <line x1="680.00" y1="306" x2="680.00" y2="330" stroke="#D56B2D" stroke-width="3"/>
+  <circle cx="594.36" cy="318" r="6.2" fill="#0B6B53" stroke="#FFFFFF" stroke-width="2.2"/>
+  <rect x="1144" y="302" width="88" height="32" rx="8" fill="#FFFFFF" fill-opacity="0.88"/>
+  <text x="1188" y="325" text-anchor="middle" class="rank-value" fill="#0B6B53">4.56</text>
   <rect x="16" y="347" width="1238" height="42" rx="9" fill="#EDF7F3"/>
   <text x="24" y="375" class="method method-feature">TSFEL-15</text>
-  <line x1="322.50" y1="368" x2="1110.00" y2="368" stroke="#0B6B53" stroke-width="2.2" stroke-linecap="round"/>
-  <line x1="322.50" y1="360" x2="322.50" y2="376" stroke="#0B6B53" stroke-width="2.2"/>
-  <line x1="1110.00" y1="360" x2="1110.00" y2="376" stroke="#0B6B53" stroke-width="2.2"/>
-  <rect x="511.50" y="357" width="262.50" height="22" rx="4" fill="#CFE9DF" stroke="#0B6B53" stroke-width="2.2"/>
-  <line x1="690.00" y1="356" x2="690.00" y2="380" stroke="#D56B2D" stroke-width="3"/>
-  <circle cx="609.73" cy="368" r="6.2" fill="#0B6B53" stroke="#FFFFFF" stroke-width="2.2"/>
-  <text x="1207" y="374" text-anchor="middle" class="value" fill="#0B6B53">4.64</text>
+  <line x1="321.25" y1="368" x2="1090.00" y2="368" stroke="#0B6B53" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="321.25" y1="360" x2="321.25" y2="376" stroke="#0B6B53" stroke-width="2.2"/>
+  <line x1="1090.00" y1="360" x2="1090.00" y2="376" stroke="#0B6B53" stroke-width="2.2"/>
+  <rect x="505.75" y="357" width="256.25" height="22" rx="4" fill="#CFE9DF" stroke="#0B6B53" stroke-width="2.2"/>
+  <line x1="680.00" y1="356" x2="680.00" y2="380" stroke="#D56B2D" stroke-width="3"/>
+  <circle cx="601.64" cy="368" r="6.2" fill="#0B6B53" stroke="#FFFFFF" stroke-width="2.2"/>
+  <rect x="1144" y="352" width="88" height="32" rx="8" fill="#FFFFFF" fill-opacity="0.88"/>
+  <text x="1188" y="375" text-anchor="middle" class="rank-value" fill="#0B6B53">4.64</text>
   <text x="24" y="425" class="method method-baseline">BYOL</text>
-  <line x1="270.00" y1="418" x2="1110.00" y2="418" stroke="#6F8290" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="270.00" y1="418" x2="1090.00" y2="418" stroke="#6F8290" stroke-width="2.2" stroke-linecap="round"/>
   <line x1="270.00" y1="410" x2="270.00" y2="426" stroke="#6F8290" stroke-width="2.2"/>
-  <line x1="1110.00" y1="410" x2="1110.00" y2="426" stroke="#6F8290" stroke-width="2.2"/>
-  <rect x="469.50" y="407" width="399.00" height="22" rx="4" fill="#E6EBEF" stroke="#6F8290" stroke-width="2.2"/>
-  <line x1="732.00" y1="406" x2="732.00" y2="430" stroke="#D56B2D" stroke-width="3"/>
-  <circle cx="653.60" cy="418" r="6.2" fill="#6F8290" stroke="#FFFFFF" stroke-width="2.2"/>
-  <text x="1207" y="424" text-anchor="middle" class="value" fill="#6F8290">5.11</text>
+  <line x1="1090.00" y1="410" x2="1090.00" y2="426" stroke="#6F8290" stroke-width="2.2"/>
+  <rect x="464.75" y="407" width="389.50" height="22" rx="4" fill="#E6EBEF" stroke="#6F8290" stroke-width="2.2"/>
+  <line x1="721.00" y1="406" x2="721.00" y2="430" stroke="#D56B2D" stroke-width="3"/>
+  <circle cx="644.47" cy="418" r="6.2" fill="#6F8290" stroke="#FFFFFF" stroke-width="2.2"/>
+  <rect x="1144" y="402" width="88" height="32" rx="8" fill="#FFFFFF" fill-opacity="0.88"/>
+  <text x="1188" y="425" text-anchor="middle" class="rank-value" fill="#6F8290">5.11</text>
   <rect x="16" y="447" width="1238" height="42" rx="9" fill="#F7F9F8"/>
   <text x="24" y="475" class="method method-baseline">SimMTM</text>
-  <line x1="690.00" y1="468" x2="1110.00" y2="468" stroke="#6F8290" stroke-width="2.2" stroke-linecap="round"/>
-  <line x1="690.00" y1="460" x2="690.00" y2="476" stroke="#6F8290" stroke-width="2.2"/>
-  <line x1="1110.00" y1="460" x2="1110.00" y2="476" stroke="#6F8290" stroke-width="2.2"/>
-  <rect x="858.00" y="457" width="168.00" height="22" rx="4" fill="#E6EBEF" stroke="#6F8290" stroke-width="2.2"/>
-  <line x1="942.00" y1="456" x2="942.00" y2="480" stroke="#D56B2D" stroke-width="3"/>
-  <circle cx="923.33" cy="468" r="6.2" fill="#6F8290" stroke="#FFFFFF" stroke-width="2.2"/>
-  <text x="1207" y="474" text-anchor="middle" class="value" fill="#6F8290">8.00</text>
+  <line x1="680.00" y1="468" x2="1090.00" y2="468" stroke="#6F8290" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="680.00" y1="460" x2="680.00" y2="476" stroke="#6F8290" stroke-width="2.2"/>
+  <line x1="1090.00" y1="460" x2="1090.00" y2="476" stroke="#6F8290" stroke-width="2.2"/>
+  <rect x="844.00" y="457" width="164.00" height="22" rx="4" fill="#E6EBEF" stroke="#6F8290" stroke-width="2.2"/>
+  <line x1="926.00" y1="456" x2="926.00" y2="480" stroke="#D56B2D" stroke-width="3"/>
+  <circle cx="907.78" cy="468" r="6.2" fill="#6F8290" stroke="#FFFFFF" stroke-width="2.2"/>
+  <rect x="1144" y="452" width="88" height="32" rx="8" fill="#FFFFFF" fill-opacity="0.88"/>
+  <text x="1188" y="475" text-anchor="middle" class="rank-value" fill="#6F8290">8.00</text>
   <text x="24" y="525" class="method method-baseline">MPM</text>
-  <line x1="942.00" y1="518" x2="1110.00" y2="518" stroke="#6F8290" stroke-width="2.2" stroke-linecap="round"/>
-  <line x1="942.00" y1="510" x2="942.00" y2="526" stroke="#6F8290" stroke-width="2.2"/>
-  <line x1="1110.00" y1="510" x2="1110.00" y2="526" stroke="#6F8290" stroke-width="2.2"/>
-  <rect x="989.25" y="507" width="120.75" height="22" rx="4" fill="#E6EBEF" stroke="#6F8290" stroke-width="2.2"/>
-  <line x1="1068.00" y1="506" x2="1068.00" y2="530" stroke="#D56B2D" stroke-width="3"/>
-  <circle cx="974.67" cy="518" r="6.2" fill="#6F8290" stroke="#FFFFFF" stroke-width="2.2"/>
-  <text x="1207" y="524" text-anchor="middle" class="value" fill="#6F8290">8.55</text>
+  <line x1="926.00" y1="518" x2="1090.00" y2="518" stroke="#6F8290" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="926.00" y1="510" x2="926.00" y2="526" stroke="#6F8290" stroke-width="2.2"/>
+  <line x1="1090.00" y1="510" x2="1090.00" y2="526" stroke="#6F8290" stroke-width="2.2"/>
+  <rect x="972.12" y="507" width="117.88" height="22" rx="4" fill="#E6EBEF" stroke="#6F8290" stroke-width="2.2"/>
+  <line x1="1049.00" y1="506" x2="1049.00" y2="530" stroke="#D56B2D" stroke-width="3"/>
+  <circle cx="957.89" cy="518" r="6.2" fill="#6F8290" stroke="#FFFFFF" stroke-width="2.2"/>
+  <rect x="1144" y="502" width="88" height="32" rx="8" fill="#FFFFFF" fill-opacity="0.88"/>
+  <text x="1188" y="525" text-anchor="middle" class="rank-value" fill="#6F8290">8.55</text>
   <rect x="16" y="547" width="1238" height="42" rx="9" fill="#F7F9F8"/>
   <text x="24" y="575" class="method method-baseline">TS2Vec</text>
-  <line x1="858.00" y1="568" x2="1110.00" y2="568" stroke="#6F8290" stroke-width="2.2" stroke-linecap="round"/>
-  <line x1="858.00" y1="560" x2="858.00" y2="576" stroke="#6F8290" stroke-width="2.2"/>
-  <line x1="1110.00" y1="560" x2="1110.00" y2="576" stroke="#6F8290" stroke-width="2.2"/>
-  <rect x="942.00" y="557" width="105.00" height="22" rx="4" fill="#E6EBEF" stroke="#6F8290" stroke-width="2.2"/>
-  <line x1="984.00" y1="556" x2="984.00" y2="580" stroke="#D56B2D" stroke-width="3"/>
-  <circle cx="985.87" cy="568" r="6.2" fill="#6F8290" stroke="#FFFFFF" stroke-width="2.2"/>
-  <text x="1207" y="574" text-anchor="middle" class="value" fill="#6F8290">8.67</text>
+  <line x1="844.00" y1="568" x2="1090.00" y2="568" stroke="#6F8290" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="844.00" y1="560" x2="844.00" y2="576" stroke="#6F8290" stroke-width="2.2"/>
+  <line x1="1090.00" y1="560" x2="1090.00" y2="576" stroke="#6F8290" stroke-width="2.2"/>
+  <rect x="926.00" y="557" width="102.50" height="22" rx="4" fill="#E6EBEF" stroke="#6F8290" stroke-width="2.2"/>
+  <line x1="967.00" y1="556" x2="967.00" y2="580" stroke="#D56B2D" stroke-width="3"/>
+  <circle cx="968.82" cy="568" r="6.2" fill="#6F8290" stroke="#FFFFFF" stroke-width="2.2"/>
+  <rect x="1144" y="552" width="88" height="32" rx="8" fill="#FFFFFF" fill-opacity="0.88"/>
+  <text x="1188" y="575" text-anchor="middle" class="rank-value" fill="#6F8290">8.67</text>
+  <line x1="1136" y1="76" x2="1136" y2="596" stroke="#DDE5E2" stroke-width="1.5"/>
   <g aria-label="visual key">
   <line x1="270" y1="660" x2="318" y2="660" stroke="#6F8290" stroke-width="2"/>
   <rect x="282" y="652" width="24" height="16" rx="3" fill="#E6EBEF" stroke="#6F8290" stroke-width="2"/>

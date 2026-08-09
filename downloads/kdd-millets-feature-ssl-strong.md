@@ -489,7 +489,7 @@ transition: fade
   <img class="result-figure" src="assets/hhar-rank-distribution.svg" alt="HHAR rank distributions across ten methods">
   <div class="result-callout">
     <div class="result-primary" data-marpit-fragment><div class="eyebrow">mean rank ↓</div><div class="value">3.76</div><div class="detail"><strong>TSFEL45</strong> has the lowest mean rank over 80 matched HHAR settings.</div></div>
-    <div class="result-secondary" data-marpit-fragment><div class="divider"></div><div class="eyebrow">mean macro F1 ↑</div><div class="value" style="font-size:34px">0.79</div><div class="comparison">Barlow / SimCLR mean rank: <strong>4.43</strong></div></div>
+    <div class="result-secondary" data-marpit-fragment><div class="divider"></div><div class="eyebrow">mean macro F1 ↑</div><div class="value">0.79</div><div class="comparison">Barlow / SimCLR mean rank: <strong>4.43</strong></div></div>
   </div>
 </div>
 
