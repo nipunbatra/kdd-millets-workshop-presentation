@@ -230,52 +230,88 @@ footer: KDD MILETS 2026 · Feature-informed SSL
 
 ---
 
-<div class="kicker">Feature intuition · activity</div>
+<!-- _class: feature-worked -->
+<div class="kicker">Feature intuition · statistical target</div>
 
-## Statistical and temporal descriptors expose differences between activity windows
+## Walking variance is ≈976× the standing variance
 
-<div class="body top">
-  <img class="feature-asset" src="assets/hhar-feature-intuition.svg" alt="Authentic HHAR standing and walking windows with variance, zero crossings, and autocorrelation">
-  <div class="feature-footer"><span><b>Variance</b> · amplitude spread</span><span><b>Mean-band crossings</b> · thresholded transitions</span><span><b>Autocorrelation</b> · repeated temporal structure</span></div>
+<div class="body top worked-example">
+  <img class="worked-example-asset" src="assets/hhar-statistical-variance-intuition.svg" alt="Authentic HHAR standing and walking accelerometer-x windows mapped to exact population-variance targets">
+  <div class="feature-evidence statistical">
+    <div class="feature-evidence-label">03 · why it may help</div>
+    <div class="feature-evidence-copy"><b>Motion-amplitude evidence</b><span>Predicting variance asks the encoder to retain per-axis amplitude spread—a cue for separating dynamic from nearly static windows.</span></div>
+    <div class="feature-evidence-task"><span>evaluated downstream task</span><b>HHAR · activity recognition</b></div>
+  </div>
 </div>
 
-<div class="source">Matched real HHAR windows from one user, device, and sensor; descriptors summarize structure, not feature importance.</div>
+<div class="source">Authentic per-channel example; activity labels explain relevance but are not used during FI-SSL pretraining.</div>
 
 <!--
 [Sources]
-- UCI Heterogeneity Activity Recognition dataset, DOI 10.24432/C5689X, CC BY 4.0; `Watch_accelerometer.csv`, user a, model gear, device gear_1; stand Index 2980–3482 and walk Index 13306–13808; 503 samples per window.
-- Values shown: magnitude variance 0.00845 vs 9.859; ±0.25-deadband centered crossings 2 vs 20; autocorrelation maxima r=0.154 at 0.668 s vs r=0.751 at 1.026 s. Full selection rule and preprocessing: `provenance/hhar-authentic-pair-manifest.txt`.
-- Descriptor-family motivation: supplied manuscript, pp. 2–3, §3.2.
-- Interpretive boundary: the visualization explains what the descriptors measure; the paper does not ablate individual descriptors or establish that these three alone classify HHAR.
+- Supplied workshop manuscript, pp. 2–3, §3.1–3.2: descriptors are extracted independently per channel, concatenated, standardized, and predicted with MSE; variance is named as a statistical example.
+- UCI Heterogeneity Activity Recognition dataset, DOI 10.24432/C5689X, CC BY 4.0; authentic matched windows from `Watch_accelerometer.csv`, user a, model gear, device gear_1; standing Index 2980–3482 and walking Index 13306–13808; 503 samples per window.
+- Displayed input is the authentic smartwatch accelerometer x-axis on a common scale. Population Var(a_x)=(1/N)Σ_i(a_x,i−mean(a_x))²: standing 0.0094445432; walking 9.2145266048; ratio 975.646, shown as approximately 976×. Exact rows and values: `data/hhar-matched-standing-walking-window-data.csv`, `data/hhar-matched-standing-walking-window-features.csv`, and `provenance/hhar-feature-intuition-xaxis.txt`.
+- Interpretive boundary: this example explains one deterministic statistical target. The paper does not establish variance as individually causal, and the activity labels are not used during pretraining.
 -->
 
 ---
 
-<div class="kicker">Feature intuition · heart rate</div>
+<!-- _class: feature-worked -->
+<div class="kicker">Feature intuition · temporal target</div>
 
-## Spectral descriptors make periodic rate information explicit
+## Walking shows a much stronger ≈1 s recurrence than standing
 
-<div class="body top">
-  <img class="feature-asset" src="assets/ppg-hr-waveform-spectrum.svg" alt="Two authentic PPG-DaLiA windows with different ECG-derived reference heart rates and their spectra">
-  <div class="feature-footer"><span><b>Dominant frequency</b> · strongest periodic component</span><span><b>f<sub>peak</sub> × 60</b> · cycles per minute</span><span>selected real windows · explanatory comparison</span></div>
+<div class="body top worked-example">
+  <img class="worked-example-asset" src="assets/hhar-temporal-autocorrelation-intuition.svg" alt="Authentic HHAR standing and walking accelerometer-x windows mapped to normalized autocorrelation peak targets">
+  <div class="feature-evidence temporal">
+    <div class="feature-evidence-label">03 · why it may help</div>
+    <div class="feature-evidence-copy"><b>Cyclic-timing evidence</b><span>Predicting an (r*, τ*) summary asks the encoder to retain recurrence strength and repeat interval—cues for periodic versus stationary activity.</span></div>
+    <div class="feature-evidence-task"><span>evaluated downstream task</span><b>HHAR · activity recognition</b></div>
+  </div>
 </div>
 
-<div class="source">PPG-DaLiA Subject 1: 51.58 and 100.35 BPM reference windows; spectra derived from the observed wrist PPG.</div>
+<div class="source">The same authentic windows reveal a different property: recurrence rather than amplitude spread.</div>
 
 <!--
 [Sources]
-- PPG-DaLiA Subject 1 windows from the Edge Impulse CSV subset of the UCI dataset, DOI 10.24432/C53890; 32 Hz; subset documentation: https://docs.edgeimpulse.com/tutorials/end-to-end/hr-hrv-estimation .
-- Lower-rate window: samples 20,832–21,087, 2018-06-29 08:55:43–08:55:50.968750, median reference HR 51.58 BPM; periodogram peak 0.859375 Hz = 51.5625 BPM.
-- Higher-rate window: samples 73,120–73,375, 2018-06-29 09:22:57–09:23:04.968750, median reference HR 100.35 BPM; periodogram peak 1.671875 Hz = 100.3125 BPM.
-- Processing: linear detrending; Hann window; 2,048-point zero-padded one-sided FFT; normalized within 0.5–3.2 Hz. This is an explanatory periodogram, not a claim about the exact implementation of every TSFEL spectral descriptor.
-- The windows were selected deliberately for pedagogical agreement and are not a representative error analysis; the paper does not isolate spectral-feature causality.
+- Supplied workshop manuscript, pp. 2–3, §3.2: temporal descriptor examples include zero-crossing rate, autocorrelation, and temporal entropy.
+- UCI Heterogeneity Activity Recognition dataset, DOI 10.24432/C5689X, CC BY 4.0; same matched accelerometer-x windows as the statistical example: `Watch_accelerometer.csv`, user a, model gear, device gear_1; standing Index 2980–3482 and walking Index 13306–13808.
+- Explanatory calculation: interpolate timestamp-irregular a_x samples to each window's median sample-rate grid, subtract the mean, and compute normalized positive-lag autocorrelation r[k]=Σ_i c[i]c[i+k]/Σ_i c[i]². The displayed summary is the pair (r*,τ*), where τ*=argmax r(τ) over 0.3–2.0 s and r*=r(τ*). Standing: r*=0.2176483 at τ*=0.667990 s. Walking: r*=0.7502005 at τ*=1.0255195 s. Procedure and exact values: `provenance/hhar-feature-intuition-xaxis.txt`.
+- Interpretive boundary: the displayed pair is an explanatory autocorrelation-derived summary, not a claim about the exact implementation of every TSFEL function or individual-feature importance. Activity labels are not used during FI-SSL pretraining.
+-->
+
+---
+
+<!-- _class: feature-worked -->
+<div class="kicker">Feature intuition · spectral target</div>
+
+## Dominant frequency aligns with reference heart rate in two PPG windows
+
+<div class="body top worked-example spectral-example">
+  <img class="worked-example-asset spectral" src="assets/ppg-hr-waveform-spectrum.svg" alt="Two authentic PPG-DaLiA input windows mapped to dominant-frequency targets and compared with ECG-derived reference heart rate">
+  <div class="feature-evidence spectral">
+    <div class="feature-evidence-label">03 · why it may help</div>
+    <div class="feature-evidence-copy"><b>Pulse-rate evidence</b><span>Predicting dominant frequency asks the encoder to retain periodic rate—a cue for heart-rate regression.</span></div>
+    <div class="feature-evidence-task"><span>evaluated downstream task</span><b>PPG-DaLiA · HR regression</b></div>
+  </div>
+</div>
+
+<div class="source">Selected authentic explanatory windows; not a representative error analysis or an individual-feature ablation.</div>
+
+<!--
+[Sources]
+- Supplied workshop manuscript, pp. 2–3, §3.2 and §3.4: spectral examples include spectral centroid, dominant frequency, and spectral entropy; PPG-DaLiA is evaluated for continuous heart-rate regression.
+- PPG-DaLiA Subject 1 windows from the authentic Edge Impulse CSV subset of the UCI dataset, DOI 10.24432/C53890; 32 Hz; subset documentation: https://docs.edgeimpulse.com/tutorials/end-to-end/hr-hrv-estimation .
+- Lower-rate window: samples 20,832–21,087, median reference HR 51.58 BPM; explanatory periodogram peak 0.859375 Hz = 51.5625 cycles/min. Higher-rate window: samples 73,120–73,375, median reference HR 100.35 BPM; peak 1.671875 Hz = 100.3125 cycles/min.
+- Processing: least-squares linear detrending, Hann taper, 2,048-point zero-padded one-sided FFT, and maximum power in 0.5–3.2 Hz. Exact rows and processing: `data/ppg-intuition-windows.csv` and `provenance/ppg-intuition-assets.md`.
+- Interpretive boundary: the windows were selected for pedagogical agreement. The visual is not a representative error analysis, an individual-feature ablation, or a claim about the exact implementation of every TSFEL spectral descriptor.
 -->
 
 ---
 
 <div class="kicker">Approach · two-path pretraining</div>
 
-## Pretraining predicts standardized TSFEL descriptors
+## Pretraining predicts these standardized descriptor targets
 
 <div class="body top">
   <img class="method-asset" src="assets/feature-ssl-method-real.svg" alt="Feature-informed SSL with fixed TSFEL target path, learned encoder and predictor, MSE loss, and downstream transfer">

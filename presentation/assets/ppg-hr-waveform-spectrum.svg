@@ -2,6 +2,7 @@
 
   <style>
     .kicker{font:600 12px 'JetBrains Mono','SFMono-Regular',monospace;letter-spacing:1.2px;fill:#6D7881}
+    .stage{font:700 18px 'JetBrains Mono','SFMono-Regular',monospace;letter-spacing:1.1px;fill:#53616C}
     .title{font:700 21px 'Work Sans','Avenir Next',Arial,sans-serif;fill:#17212B}
     .big{font:700 30px 'Work Sans','Avenir Next',Arial,sans-serif;fill:#17212B}
     .body{font:500 15px 'Work Sans','Avenir Next',Arial,sans-serif;fill:#40505D}
@@ -19,12 +20,12 @@
   </style>
 <text x="35.00" y="24.00" class="kicker" text-anchor="start" >AUTHENTIC WRIST PPG · TWO 8 S WINDOWS</text>
 <text x="1165.00" y="24.00" class="small" text-anchor="end" >detrended + scaled within each window for visual comparison</text>
-<text x="260.00" y="50.00" class="kicker" text-anchor="start" >observed waveform</text>
-<text x="932.00" y="50.00" class="kicker" text-anchor="middle" >periodic energy</text>
+<text x="260.00" y="50.00" class="stage" text-anchor="start" >01 · INPUT — WRIST PPG</text>
+<text x="932.00" y="50.00" class="stage" text-anchor="middle" >02 · EXTRACTED TARGET — fₚₑₐₖ</text>
 <rect x="35" y="64" width="1130" height="190" rx="16" class="card"/>
 <text x="58.00" y="96.00" class="kicker" text-anchor="start" >LOWER RATE</text>
 <text x="58.00" y="133.00" class="big" text-anchor="start" >51.58 BPM</text>
-<text x="58.00" y="158.00" class="small" text-anchor="start" >dataset HR label</text>
+<text x="58.00" y="158.00" class="small" text-anchor="start" >median reference HR</text>
 <path d="M260.00,212.00H810.00" class="axisline"/>
 <path d="M260.00,96.00V212.00" class="grid"/>
 <text x="260.00" y="228.00" class="axis" text-anchor="middle" >0</text>
@@ -48,11 +49,11 @@
 <path d="M902.61,96.00V212.00" stroke="#285F8F" stroke-width="1.4" stroke-dasharray="4 4"/>
 <circle cx="902.61" cy="101.52" r="4.5" fill="#285F8F"/>
 <text x="902.61" y="89.00" class="mono" text-anchor="middle" >0.859 Hz</text>
-<text x="1128.00" y="248.00" class="small" text-anchor="end" >≈ 51.6 BPM</text>
+<text x="1128.00" y="248.00" class="small" text-anchor="end" >fₚₑₐₖ × 60 = 51.56 cycles/min</text>
 <rect x="35" y="280" width="1130" height="190" rx="16" class="card"/>
 <text x="58.00" y="312.00" class="kicker" text-anchor="start" >HIGHER RATE</text>
 <text x="58.00" y="349.00" class="big" text-anchor="start" >100.35 BPM</text>
-<text x="58.00" y="374.00" class="small" text-anchor="start" >dataset HR label</text>
+<text x="58.00" y="374.00" class="small" text-anchor="start" >median reference HR</text>
 <path d="M260.00,428.00H810.00" class="axisline"/>
 <path d="M260.00,312.00V428.00" class="grid"/>
 <text x="260.00" y="444.00" class="axis" text-anchor="middle" >0</text>
@@ -76,7 +77,7 @@
 <path d="M980.85,312.00V428.00" stroke="#A63D32" stroke-width="1.4" stroke-dasharray="4 4"/>
 <circle cx="980.85" cy="317.52" r="4.5" fill="#A63D32"/>
 <text x="980.85" y="305.00" class="mono" text-anchor="middle" >1.672 Hz</text>
-<text x="1128.00" y="464.00" class="small" text-anchor="end" >≈ 100.3 BPM</text>
+<text x="1128.00" y="464.00" class="small" text-anchor="end" >fₚₑₐₖ × 60 = 100.31 cycles/min</text>
 <path d="M735,497 H982" stroke="#6D7881" stroke-width="1.8" marker-end="url(#arrow-muted)"/>
 
   <defs>
