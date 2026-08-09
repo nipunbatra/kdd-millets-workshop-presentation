@@ -1,64 +1,186 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520">
-
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="500" viewBox="0 0 1200 500" role="img" aria-labelledby="title desc">
+  <title id="title">Feature-informed pretraining and downstream transfer</title>
+  <desc id="desc">An authentic PPG example window splits into a fixed TSFEL target path and a trainable neural prediction path. One of four alternative encoder backbones and a feature head are trained with mean squared error. After pretraining the feature head is discarded; a new task head is trained either with the encoder frozen or with the encoder fine-tuned.</desc>
   <style>
-    .kicker{font:600 12px 'JetBrains Mono','SFMono-Regular',monospace;letter-spacing:1.2px;fill:#6D7881}
-    .title{font:700 21px 'Work Sans','Avenir Next',Arial,sans-serif;fill:#17212B}
-    .big{font:700 30px 'Work Sans','Avenir Next',Arial,sans-serif;fill:#17212B}
-    .body{font:500 15px 'Work Sans','Avenir Next',Arial,sans-serif;fill:#40505D}
-    .small{font:500 12px 'Work Sans','Avenir Next',Arial,sans-serif;fill:#6D7881}
-    .mono{font:500 12px 'JetBrains Mono','SFMono-Regular',monospace;fill:#40505D}
-    .metric{font:700 17px 'JetBrains Mono','SFMono-Regular',monospace;fill:#17212B}
-    .axis{font:500 10px 'JetBrains Mono','SFMono-Regular',monospace;fill:#6D7881}
-    .card{fill:#FFFFFF;stroke:#D9DEE2;stroke-width:1.2}
-    .grid{fill:none;stroke:#EDF0F1;stroke-width:1}
-    .axisline{fill:none;stroke:#D9DEE2;stroke-width:1.1}
-    .blue-line{fill:none;stroke:#285F8F;stroke-width:2.7;stroke-linecap:round;stroke-linejoin:round}
-    .brick-line{fill:none;stroke:#A63D32;stroke-width:2.7;stroke-linecap:round;stroke-linejoin:round}
-    .teal-line{fill:none;stroke:#26796F;stroke-width:2.7;stroke-linecap:round;stroke-linejoin:round}
-    .gold-line{fill:none;stroke:#A36F24;stroke-width:2.7;stroke-linecap:round;stroke-linejoin:round}
+    .lane{font:600 15px 'JetBrains Mono','SFMono-Regular',monospace;letter-spacing:1.15px;text-transform:uppercase}
+    .title{font:700 20px 'Work Sans','Avenir Next',Arial,sans-serif;fill:#17212B}
+    .head-title{font:700 18px 'Work Sans','Avenir Next',Arial,sans-serif;fill:#17212B}
+    .body{font:500 14px 'Work Sans','Avenir Next',Arial,sans-serif;fill:#40505D}
+    .body-strong{font:650 14px 'Work Sans','Avenir Next',Arial,sans-serif;fill:#17212B}
+    .small{font:500 12.5px 'Work Sans','Avenir Next',Arial,sans-serif;fill:#6D7881}
+    .mono{font:500 12.5px 'JetBrains Mono','SFMono-Regular',monospace;fill:#40505D}
+    .state{font:600 13.5px 'JetBrains Mono','SFMono-Regular',monospace;fill:#40505D}
+    .arch{font:600 13.5px 'Work Sans','Avenir Next',Arial,sans-serif;fill:#17212B}
+    .equation{font:700 23px 'Work Sans','Avenir Next',Arial,sans-serif;fill:#17212B}
+    .fixed-field{fill:#EEF6F4;stroke:#26796F;stroke-width:1.5}
+    .train-field{fill:#EEF3F8;stroke:#285F8F;stroke-width:1.5}
+    .transfer-field{fill:#FAF6EC;stroke:#A36F24;stroke-width:1.35}
+    .node{fill:#FFFFFF;stroke:#D7DDE1;stroke-width:1.2}
+    .fixed-node{fill:#FFFFFF;stroke:#26796F;stroke-width:1.45}
+    .train-node{fill:#FFFFFF;stroke:#285F8F;stroke-width:1.45}
+    .loss-node{fill:#FBF1EE;stroke:#A63D32;stroke-width:1.55}
+    .flow{fill:none;stroke:#17212B;stroke-width:2;stroke-linejoin:round}
+    .fixed-flow{fill:none;stroke:#26796F;stroke-width:2;stroke-linejoin:round}
+    .train-flow{fill:none;stroke:#285F8F;stroke-width:2;stroke-linejoin:round}
+    .transfer-flow{fill:none;stroke:#6D7881;stroke-width:2.05;stroke-linejoin:round}
+    .reuse-flow{fill:none;stroke:#6D7881;stroke-width:1.7;stroke-dasharray:6 5;stroke-linejoin:round}
+    .glyph{fill:none;stroke:#285F8F;stroke-width:1.45;stroke-linecap:round;stroke-linejoin:round}
+    .glyph-fill{fill:#285F8F}
+    .fixed-text{fill:#26796F}
+    .train-text{fill:#285F8F}
+    .brick-text{fill:#A63D32}
+    .gold-text{fill:#A36F24}
   </style>
-
   <defs>
     <marker id="arrow-ink" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
       <path d="M0,0 L8,4 L0,8 Z" fill="#17212B"/>
     </marker>
+    <marker id="arrow-teal" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#26796F"/>
+    </marker>
+    <marker id="arrow-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#285F8F"/>
+    </marker>
+    <marker id="arrow-gold" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#A36F24"/>
+    </marker>
     <marker id="arrow-muted" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
       <path d="M0,0 L8,4 L0,8 Z" fill="#6D7881"/>
     </marker>
+    <clipPath id="input-clip"><rect x="39" y="151" width="140" height="52" rx="4"/></clipPath>
+    <g id="lock-icon" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="1" y="7" width="14" height="11" rx="2"/>
+      <path d="M4,7V4.7A4,4 0 0 1 12,4.7V7"/>
+      <path d="M8,11v3"/>
+    </g>
   </defs>
-<text x="35.00" y="24.00" class="kicker" text-anchor="start" >ONE INPUT WINDOW · FIXED TARGET + LEARNED PREDICTION</text>
-<rect x="35" y="166" width="220" height="170" rx="16" class="card"/>
-<text x="55.00" y="198.00" class="title" text-anchor="start" >observed window x</text>
-<text x="55.00" y="220.00" class="small" text-anchor="start" >PPG-DaLiA · 8 s</text>
-<path d="M55,273.0H235" class="grid"/>
-<path d="M55.00,282.32 L55.71,285.08 L56.41,288.81 L57.12,290.97 L57.82,288.39 L58.53,281.07 L59.24,272.54 L59.94,266.36 L60.65,263.85 L61.35,264.09 L62.06,264.37 L62.76,263.40 L63.47,263.11 L64.18,265.03 L64.88,267.80 L65.59,269.79 L66.29,271.24 L67.00,273.02 L67.71,276.30 L68.41,281.37 L69.12,286.00 L69.82,287.00 L70.53,282.51 L71.24,273.84 L71.94,265.07 L72.65,259.40 L73.35,257.15 L74.06,257.22 L74.76,258.85 L75.47,261.24 L76.18,263.62 L76.88,265.75 L77.59,267.92 L78.29,270.34 L79.00,273.34 L79.71,277.15 L80.41,281.77 L81.12,286.91 L81.82,291.94 L82.53,294.79 L83.24,292.56 L83.94,285.15 L84.65,275.90 L85.35,267.96 L86.06,262.35 L86.76,259.33 L87.47,259.10 L88.18,260.24 L88.88,260.67 L89.59,261.18 L90.29,264.46 L91.00,270.16 L91.71,274.73 L92.41,277.09 L93.12,279.77 L93.82,284.63 L94.53,290.28 L95.24,292.59 L95.94,288.10 L96.65,277.91 L97.35,268.14 L98.06,263.74 L98.76,263.08 L99.47,262.63 L100.18,262.80 L100.88,264.74 L101.59,266.44 L102.29,267.03 L103.00,268.63 L103.71,271.52 L104.41,273.78 L105.12,275.09 L105.82,276.84 L106.53,280.06 L107.24,285.08 L107.94,290.54 L108.65,292.07 L109.35,285.91 L110.06,273.96 L110.76,262.50 L111.47,255.48 L112.18,252.87 L112.88,253.81 L113.59,257.69 L114.29,262.86 L115.00,267.60 L115.71,271.44 L116.41,274.26 L117.12,275.62 L117.82,275.85 L118.53,276.47 L119.24,278.48 L119.94,281.77 L120.65,285.91 L121.35,289.79 L122.06,291.06 L122.76,288.11 L123.47,281.65 L124.18,273.60 L124.88,265.98 L125.59,261.49 L126.29,261.64 L127.00,264.67 L127.71,267.68 L128.41,269.79 L129.12,272.22 L129.82,276.09 L130.53,280.79 L131.24,284.09 L131.94,285.03 L132.65,284.99 L133.35,285.82 L134.06,286.71 L134.76,284.45 L135.47,277.33 L136.18,267.99 L136.88,260.88 L137.59,257.48 L138.29,256.79 L139.00,258.03 L139.71,260.47 L140.41,263.10 L141.12,265.42 L141.82,267.33 L142.53,268.41 L143.24,268.52 L143.94,268.41 L144.65,269.14 L145.35,271.88 L146.06,276.89 L146.76,283.31 L147.47,290.10 L148.18,295.47 L148.88,295.77 L149.59,288.38 L150.29,275.87 L151.00,263.98 L151.71,255.97 L152.41,251.45 L153.12,249.29 L153.82,249.41 L154.53,252.05 L155.24,256.36 L155.94,261.13 L156.65,265.70 L157.35,269.76 L158.06,273.20 L158.76,276.69 L159.47,281.11 L160.18,285.68 L160.88,289.51 L161.59,293.08 L162.29,295.06 L163.00,291.34 L163.71,281.03 L164.41,269.48 L165.12,261.38 L165.82,257.18 L166.53,256.94 L167.24,261.14 L167.94,267.71 L168.65,272.17 L169.35,272.48 L170.06,270.83 L170.76,270.09 L171.47,270.29 L172.18,270.73 L172.88,273.14 L173.59,278.89 L174.29,286.47 L175.00,293.75 L175.71,298.82 L176.41,298.39 L177.12,290.52 L177.82,278.95 L178.53,269.26 L179.24,263.12 L179.94,259.54 L180.65,258.51 L181.35,260.16 L182.06,262.76 L182.76,264.65 L183.47,265.86 L184.18,266.94 L184.88,268.09 L185.59,269.36 L186.29,270.53 L187.00,271.81 L187.71,274.84 L188.41,281.35 L189.12,289.96 L189.82,295.30 L190.53,292.25 L191.24,280.99 L191.94,266.56 L192.65,254.47 L193.35,247.27 L194.06,244.90 L194.76,246.22 L195.47,250.72 L196.18,258.37 L196.88,267.51 L197.59,275.59 L198.29,281.24 L199.00,284.61 L199.71,286.24 L200.41,287.05 L201.12,288.28 L201.82,290.54 L202.53,293.47 L203.24,295.85 L203.94,295.64 L204.65,291.18 L205.35,282.70 L206.06,272.73 L206.76,264.01 L207.47,257.89 L208.18,254.36 L208.88,253.24 L209.59,254.22 L210.29,256.14 L211.00,258.28 L211.71,261.46 L212.41,266.75 L213.12,273.48 L213.82,280.04 L214.53,285.73 L215.24,291.08 L215.94,296.66 L216.65,301.52 L217.35,302.57 L218.06,296.89 L218.76,285.26 L219.47,272.53 L220.18,263.13 L220.88,258.49 L221.59,257.98 L222.29,260.38 L223.00,263.62 L223.71,265.35 L224.41,264.97 L225.12,264.18 L225.82,264.22 L226.53,264.53 L227.24,264.54 L227.94,265.81 L228.65,269.86 L229.35,276.28 L230.06,283.61 L230.76,289.60 L231.47,290.61 L232.18,284.92 L232.88,275.66 L233.59,267.33 L234.29,261.78 L235.00,259.22" class="blue-line"/>
-<path d="M255,251 H302 V121 H342" fill="none" stroke="#17212B" stroke-width="2.1" marker-end="url(#arrow-ink)"/>
-<path d="M302,251 V356 H342" fill="none" stroke="#17212B" stroke-width="2.1" marker-end="url(#arrow-ink)"/>
-<text x="342.00" y="58.00" class="kicker" text-anchor="start" >FIXED EXTRACTED TARGET f(x) · NO LEARNED PARAMETERS</text>
-<rect x="342" y="78" width="286" height="88" rx="14" fill="#EEF6F4" stroke="#26796F" stroke-width="1.6"/>
-<text x="485.00" y="114.00" class="title" text-anchor="middle" >TSFEL extractor</text>
-<text x="485.00" y="140.00" class="small" text-anchor="middle" >statistical · temporal · spectral</text>
-<path d="M628,122 H690" fill="none" stroke="#26796F" stroke-width="2.1" marker-end="url(#arrow-ink)"/>
-<rect x="690" y="78" width="205" height="88" rx="14" fill="#EEF6F4" stroke="#26796F" stroke-width="1.6"/>
-<text x="792.00" y="103.00" class="title" text-anchor="middle" >standardized f(x)</text>
-<text x="792.00" y="123.00" class="small" text-anchor="middle" >dataset-level z-score</text>
-<rect x="729.00" y="132.00" width="12" height="34" rx="3" fill="#A63D32"/><rect x="747.00" y="132.00" width="12" height="34" rx="3" fill="#285F8F"/><rect x="765.00" y="132.00" width="12" height="34" rx="3" fill="#26796F"/><rect x="783.00" y="132.00" width="12" height="34" rx="3" fill="#A63D32"/><rect x="801.00" y="132.00" width="12" height="34" rx="3" fill="#285F8F"/><rect x="819.00" y="132.00" width="12" height="34" rx="3" fill="#26796F"/><rect x="837.00" y="132.00" width="12" height="34" rx="3" fill="#A63D32"/><rect x="855.00" y="132.00" width="12" height="34" rx="3" fill="#285F8F"/>
-<text x="342.00" y="293.00" class="kicker" text-anchor="start" >LEARNED PREDICTION f̂(x)</text>
-<rect x="342" y="313" width="204" height="88" rx="14" fill="#EEF3F8" stroke="#285F8F" stroke-width="1.6"/>
-<text x="444.00" y="350.00" class="title" text-anchor="middle" >encoder Eθ</text>
-<text x="444.00" y="376.00" class="small" text-anchor="middle" >representation h</text>
-<path d="M546,357 H600" fill="none" stroke="#285F8F" stroke-width="2.1" marker-end="url(#arrow-ink)"/>
-<rect x="600" y="313" width="204" height="88" rx="14" fill="#EEF3F8" stroke="#285F8F" stroke-width="1.6"/>
-<text x="702.00" y="350.00" class="title" text-anchor="middle" >head Pφ</text>
-<text x="702.00" y="376.00" class="small" text-anchor="middle" >prediction f̂(x)</text>
-<path d="M895,122 H950 V225 H986" fill="none" stroke="#17212B" stroke-width="2.1" marker-end="url(#arrow-ink)"/>
-<path d="M804,357 H950 V277 H986" fill="none" stroke="#17212B" stroke-width="2.1" marker-end="url(#arrow-ink)"/>
-<rect x="986" y="196" width="179" height="110" rx="16" fill="#FBF1EE" stroke="#A63D32" stroke-width="1.8"/>
-<text x="1075.00" y="235.00" class="title" text-anchor="middle" >feature loss</text>
-<text x="1075.00" y="273.00" class="big" text-anchor="middle" >MSE(f̂, f)</text>
-<path d="M444,401 V458 H612" fill="none" stroke="#6D7881" stroke-width="1.8" stroke-dasharray="6 6" marker-end="url(#arrow-muted)"/>
-<text x="361.00" y="443.00" class="small" text-anchor="start" >after pretraining</text>
-<rect x="612" y="427" width="305" height="62" rx="13" fill="#FFFFFF" stroke="#D9DEE2" stroke-width="1.3"/>
-<text x="765.00" y="455.00" class="title" text-anchor="middle" >downstream use</text>
-<text x="765.00" y="477.00" class="small" text-anchor="middle" >heart-rate regression · activity classification</text>
+
+  <!-- Connectors are intentionally drawn before nodes. -->
+  <path d="M195,170 H225 V102 H255" class="flow" marker-end="url(#arrow-ink)"/>
+  <path d="M225,170 V260 H255" class="flow" marker-end="url(#arrow-ink)"/>
+  <path d="M520,105 H550" class="fixed-flow" marker-end="url(#arrow-teal)"/>
+  <path d="M795,105 H850 V150 H900" class="fixed-flow" marker-end="url(#arrow-teal)"/>
+  <path d="M630,268 H660" class="train-flow" marker-end="url(#arrow-blue)"/>
+  <path d="M800,268 H850 V220 H900" class="train-flow" marker-end="url(#arrow-blue)"/>
+  <path d="M455,318 V353" class="reuse-flow" marker-end="url(#arrow-muted)"/>
+  <path d="M190,438 H226" class="transfer-flow" marker-end="url(#arrow-muted)"/>
+  <path d="M358,438 H398" class="transfer-flow" marker-end="url(#arrow-muted)"/>
+  <path d="M770,438 H806" class="transfer-flow" marker-end="url(#arrow-muted)"/>
+  <path d="M938,438 H978" class="transfer-flow" marker-end="url(#arrow-muted)"/>
+
+  <!-- Authentic input example. -->
+  <rect x="20" y="95" width="175" height="150" rx="15" class="node"/>
+  <text x="38" y="123" class="title">input window X</text>
+  <text x="38" y="143" class="small">PPG-DaLiA · 8 s example</text>
+  <rect x="38" y="151" width="142" height="52" rx="4" fill="#F7F9FA" stroke="#EDF0F1"/>
+  <g clip-path="url(#input-clip)">
+    <image x="39" y="151" width="140" height="52" preserveAspectRatio="none" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDEyMDAgMTgwIj4KICA8cGF0aCBkPSJNNC4wMCwxMTEuOTQgTDguNjcsMTE4LjQzIEwxMy4zNSwxMjcuMjAgTDE4LjAyLDEzMi4yNyBMMjIuNzAsMTI2LjIyIEwyNy4zNywxMDguOTkgTDMyLjA1LDg4LjkyIEwzNi43Miw3NC4zNyBMNDEuNDAsNjguNDggTDQ2LjA3LDY5LjA0IEw1MC43NSw2OS42OSBMNTUuNDIsNjcuNDIgTDYwLjA5LDY2LjcyIEw2NC43Nyw3MS4yNSBMNjkuNDQsNzcuNzcgTDc0LjEyLDgyLjQ1IEw3OC43OSw4NS44NiBMODMuNDcsOTAuMDQgTDg4LjE0LDk3Ljc2IEw5Mi44MiwxMDkuNjggTDk3LjQ5LDEyMC41OCBMMTAyLjE2LDEyMi45NCBMMTA2Ljg0LDExMi4zNyBMMTExLjUxLDkxLjk5IEwxMTYuMTksNzEuMzUgTDEyMC44Niw1Ny45OSBMMTI1LjU0LDUyLjcxIEwxMzAuMjEsNTIuODggTDEzNC44OSw1Ni43MSBMMTM5LjU2LDYyLjMzIEwxNDQuMjQsNjcuOTMgTDE0OC45MSw3Mi45NSBMMTUzLjU4LDc4LjA0IEwxNTguMjYsODMuNzQgTDE2Mi45Myw5MC43OSBMMTY3LjYxLDk5Ljc3IEwxNzIuMjgsMTEwLjY0IEwxNzYuOTYsMTIyLjc0IEwxODEuNjMsMTM0LjU3IEwxODYuMzEsMTQxLjI3IEwxOTAuOTgsMTM2LjAzIEwxOTUuNjUsMTE4LjU4IEwyMDAuMzMsOTYuODEgTDIwNS4wMCw3OC4xNCBMMjA5LjY4LDY0Ljk1IEwyMTQuMzUsNTcuODQgTDIxOS4wMyw1Ny4zMCBMMjIzLjcwLDU5Ljk5IEwyMjguMzgsNjAuOTkgTDIzMy4wNSw2Mi4xOSBMMjM3LjczLDY5LjkwIEwyNDIuNDAsODMuMzEgTDI0Ny4wNyw5NC4wNyBMMjUxLjc1LDk5LjYzIEwyNTYuNDIsMTA1LjkyIEwyNjEuMTAsMTE3LjM4IEwyNjUuNzcsMTMwLjY1IEwyNzAuNDUsMTM2LjA4IEwyNzUuMTIsMTI1LjUzIEwyNzkuODAsMTAxLjU0IEwyODQuNDcsNzguNTcgTDI4OS4xNSw2OC4yMiBMMjkzLjgyLDY2LjY3IEwyOTguNDksNjUuNjAgTDMwMy4xNyw2Ni4wMCBMMzA3Ljg0LDcwLjU3IEwzMTIuNTIsNzQuNTcgTDMxNy4xOSw3NS45NSBMMzIxLjg3LDc5LjcyIEwzMjYuNTQsODYuNTIgTDMzMS4yMiw5MS44MyBMMzM1Ljg5LDk0LjkzIEwzNDAuNTYsOTkuMDMgTDM0NS4yNCwxMDYuNjEgTDM0OS45MSwxMTguNDIgTDM1NC41OSwxMzEuMjggTDM1OS4yNiwxMzQuODggTDM2My45NCwxMjAuMzcgTDM2OC42MSw5Mi4yNSBMMzczLjI5LDY1LjMwIEwzNzcuOTYsNDguNzcgTDM4Mi42NCw0Mi42NCBMMzg3LjMxLDQ0Ljg1IEwzOTEuOTgsNTMuOTcgTDM5Ni42Niw2Ni4xNSBMNDAxLjMzLDc3LjI5IEw0MDYuMDEsODYuMzQgTDQxMC42OCw5Mi45NiBMNDE1LjM2LDk2LjE2IEw0MjAuMDMsOTYuNzAgTDQyNC43MSw5OC4xNiBMNDI5LjM4LDEwMi44OSBMNDM0LjA1LDExMC42NCBMNDM4LjczLDEyMC4zNyBMNDQzLjQwLDEyOS41MCBMNDQ4LjA4LDEzMi40OSBMNDUyLjc1LDEyNS41NCBMNDU3LjQzLDExMC4zNiBMNDYyLjEwLDkxLjQyIEw0NjYuNzgsNzMuNDkgTDQ3MS40NSw2Mi45MiBMNDc2LjEzLDYzLjI3IEw0ODAuODAsNzAuNDAgTDQ4NS40Nyw3Ny40NyBMNDkwLjE1LDgyLjQ2IEw0OTQuODIsODguMTYgTDQ5OS41MCw5Ny4yNyBMNTA0LjE3LDEwOC4zMiBMNTA4Ljg1LDExNi4xMCBMNTEzLjUyLDExOC4zMCBMNTE4LjIwLDExOC4yMCBMNTIyLjg3LDEyMC4xNyBMNTI3LjU1LDEyMi4yNiBMNTMyLjIyLDExNi45MyBMNTM2Ljg5LDEwMC4xOSBMNTQxLjU3LDc4LjIyIEw1NDYuMjQsNjEuNDggTDU1MC45Miw1My40NyBMNTU1LjU5LDUxLjg1IEw1NjAuMjcsNTQuNzcgTDU2NC45NCw2MC41MiBMNTY5LjYyLDY2LjcyIEw1NzQuMjksNzIuMTcgTDU3OC45Niw3Ni42NiBMNTgzLjY0LDc5LjIwIEw1ODguMzEsNzkuNDYgTDU5Mi45OSw3OS4xOSBMNTk3LjY2LDgwLjkzIEw2MDIuMzQsODcuMzYgTDYwNy4wMSw5OS4xNSBMNjExLjY5LDExNC4yNiBMNjE2LjM2LDEzMC4yMyBMNjIxLjA0LDE0Mi44NyBMNjI1LjcxLDE0My41OCBMNjMwLjM4LDEyNi4yMCBMNjM1LjA2LDk2Ljc2IEw2MzkuNzMsNjguNzggTDY0NC40MSw0OS45MiBMNjQ5LjA4LDM5LjMwIEw2NTMuNzYsMzQuMjEgTDY1OC40MywzNC40OSBMNjYzLjExLDQwLjcxIEw2NjcuNzgsNTAuODQgTDY3Mi40NSw2Mi4wNiBMNjc3LjEzLDcyLjgzIEw2ODEuODAsODIuMzkgTDY4Ni40OCw5MC40NiBMNjkxLjE1LDk4LjY5IEw2OTUuODMsMTA5LjA5IEw3MDAuNTAsMTE5Ljg0IEw3MDUuMTgsMTI4Ljg2IEw3MDkuODUsMTM3LjI2IEw3MTQuNTMsMTQxLjkyIEw3MTkuMjAsMTMzLjE2IEw3MjMuODcsMTA4Ljg4IEw3MjguNTUsODEuNzMgTDczMy4yMiw2Mi42NiBMNzM3LjkwLDUyLjc3IEw3NDIuNTcsNTIuMjEgTDc0Ny4yNSw2Mi4xMSBMNzUxLjkyLDc3LjU1IEw3NTYuNjAsODguMDUgTDc2MS4yNyw4OC43OCBMNzY1Ljk1LDg0Ljg5IEw3NzAuNjIsODMuMTUgTDc3NS4yOSw4My42MyBMNzc5Ljk3LDg0LjY1IEw3ODQuNjQsOTAuMzMgTDc4OS4zMiwxMDMuODUgTDc5My45OSwxMjEuNzAgTDc5OC42NywxMzguODMgTDgwMy4zNCwxNTAuNzYgTDgwOC4wMiwxNDkuNzQgTDgxMi42OSwxMzEuMjIgTDgxNy4zNiwxMDQuMDAgTDgyMi4wNCw4MS4yMSBMODI2LjcxLDY2Ljc0IEw4MzEuMzksNTguMzIgTDgzNi4wNiw1NS45MiBMODQwLjc0LDU5Ljc4IEw4NDUuNDEsNjUuOTEgTDg1MC4wOSw3MC4zNiBMODU0Ljc2LDczLjIwIEw4NTkuNDQsNzUuNzQgTDg2NC4xMSw3OC40NSBMODY4Ljc4LDgxLjQ0IEw4NzMuNDYsODQuMTggTDg3OC4xMyw4Ny4xOSBMODgyLjgxLDk0LjM0IEw4ODcuNDgsMTA5LjY0IEw4OTIuMTYsMTI5LjkwIEw4OTYuODMsMTQyLjQ4IEw5MDEuNTEsMTM1LjMwIEw5MDYuMTgsMTA4LjgwIEw5MTAuODUsNzQuODYgTDkxNS41Myw0Ni40MSBMOTIwLjIwLDI5LjQ2IEw5MjQuODgsMjMuODkgTDkyOS41NSwyNi45OCBMOTM0LjIzLDM3LjU5IEw5MzguOTAsNTUuNTkgTDk0My41OCw3Ny4wNyBMOTQ4LjI1LDk2LjA5IEw5NTIuOTMsMTA5LjQwIEw5NTcuNjAsMTE3LjMyIEw5NjIuMjcsMTIxLjE1IEw5NjYuOTUsMTIzLjA1IEw5NzEuNjIsMTI1Ljk1IEw5NzYuMzAsMTMxLjI3IEw5ODAuOTcsMTM4LjE3IEw5ODUuNjUsMTQzLjc2IEw5OTAuMzIsMTQzLjI4IEw5OTUuMDAsMTMyLjc3IEw5OTkuNjcsMTEyLjgyIEwxMDA0LjM1LDg5LjM3IEwxMDA5LjAyLDY4Ljg0IEwxMDEzLjY5LDU0LjQ2IEwxMDE4LjM3LDQ2LjE1IEwxMDIzLjA0LDQzLjUxIEwxMDI3LjcyLDQ1LjgyIEwxMDMyLjM5LDUwLjMzIEwxMDM3LjA3LDU1LjM1IEwxMDQxLjc0LDYyLjg0IEwxMDQ2LjQyLDc1LjI5IEwxMDUxLjA5LDkxLjE0IEwxMDU1Ljc2LDEwNi41NyBMMTA2MC40NCwxMTkuOTYgTDEwNjUuMTEsMTMyLjU0IEwxMDY5Ljc5LDE0NS42NyBMMTA3NC40NiwxNTcuMTAgTDEwNzkuMTQsMTU5LjU4IEwxMDgzLjgxLDE0Ni4yMSBMMTA4OC40OSwxMTguODUgTDEwOTMuMTYsODguODkgTDEwOTcuODQsNjYuNzggTDExMDIuNTEsNTUuODYgTDExMDcuMTgsNTQuNjUgTDExMTEuODYsNjAuMzEgTDExMTYuNTMsNjcuOTMgTDExMjEuMjEsNzIuMDAgTDExMjUuODgsNzEuMTEgTDExMzAuNTYsNjkuMjUgTDExMzUuMjMsNjkuMzUgTDExMzkuOTEsNzAuMDggTDExNDQuNTgsNzAuMTAgTDExNDkuMjUsNzMuMDggTDExNTMuOTMsODIuNjEgTDExNTguNjAsOTcuNzEgTDExNjMuMjgsMTE0Ljk2IEwxMTY3Ljk1LDEyOS4wNSBMMTE3Mi42MywxMzEuNDMgTDExNzcuMzAsMTE4LjA1IEwxMTgxLjk4LDk2LjI2IEwxMTg2LjY1LDc2LjY2IEwxMTkxLjMzLDYzLjU5IEwxMTk2LjAwLDU3LjU4IiBmaWxsPSJub25lIiBzdHJva2U9IiMyODVGOEYiIHN0cm9rZS13aWR0aD0iNC4yIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+"/>
+  </g>
+  <text x="38" y="228" class="mono">X ∈ R<tspan baseline-shift="super" font-size="9">T×C</tspan></text>
+
+  <!-- Fixed target path. -->
+  <rect x="255" y="35" width="565" height="135" rx="16" class="fixed-field"/>
+  <circle cx="277" cy="58" r="5" fill="#26796F"/>
+  <text x="291" y="63" class="lane fixed-text">FIXED TARGET · NO GRADIENT</text>
+  <rect x="275" y="75" width="245" height="75" rx="12" class="fixed-node"/>
+  <g transform="translate(291 96)" color="#26796F"><use href="#lock-icon" xlink:href="#lock-icon"/></g>
+  <text x="320" y="103" class="title">per-channel TSFEL</text>
+  <text x="320" y="126" class="body">statistical · temporal · spectral</text>
+  <text x="320" y="143" class="small">fixed · precompute once</text>
+  <rect x="550" y="75" width="245" height="75" rx="12" class="fixed-node"/>
+  <text x="570" y="103" class="title">standardized f(X)</text>
+  <text x="570" y="126" class="body">concatenate per channel</text>
+  <text x="570" y="143" class="small">fit once, then fixed · d = n<tspan baseline-shift="sub" font-size="9">f</tspan> × C</text>
+
+  <!-- Trainable prediction path. -->
+  <rect x="255" y="190" width="565" height="145" rx="16" class="train-field"/>
+  <circle cx="277" cy="213" r="5" fill="#285F8F"/>
+  <text x="291" y="218" class="lane train-text">TRAINED DURING PRETRAINING · UPDATE θ, φ</text>
+  <rect x="275" y="228" width="355" height="90" rx="12" class="train-node"/>
+  <text x="292" y="250" class="title">encoder Eθ <tspan class="small">· choose one per run</tspan></text>
+
+  <!-- MLP glyph. -->
+  <g transform="translate(298 262)">
+    <path d="M2,4 L18,2 M2,4 L18,12 M2,14 L18,2 M2,14 L18,12 M18,2 L34,7 M18,12 L34,7" class="glyph"/>
+    <circle cx="2" cy="4" r="2.6" class="glyph-fill"/><circle cx="2" cy="14" r="2.6" class="glyph-fill"/>
+    <circle cx="18" cy="2" r="2.6" class="glyph-fill"/><circle cx="18" cy="12" r="2.6" class="glyph-fill"/>
+    <circle cx="34" cy="7" r="2.6" class="glyph-fill"/>
+    <text x="18" y="35" text-anchor="middle" class="arch">MLP</text>
+  </g>
+
+  <!-- MLP-Mixer glyph. -->
+  <g transform="translate(377 261)">
+    <rect x="1" y="1" width="8" height="8" class="glyph"/><rect x="11" y="1" width="8" height="8" class="glyph"/><rect x="21" y="1" width="8" height="8" class="glyph"/>
+    <rect x="1" y="11" width="8" height="8" class="glyph"/><rect x="11" y="11" width="8" height="8" class="glyph"/><rect x="21" y="11" width="8" height="8" class="glyph"/>
+    <path d="M-2,10 H32 M15,-2 V22" class="glyph"/>
+    <text x="15" y="36" text-anchor="middle" class="arch">MLP-Mixer</text>
+  </g>
+
+  <!-- ResNet glyph. -->
+  <g transform="translate(466 261)">
+    <rect x="1" y="4" width="9" height="16" rx="2" class="glyph"/><rect x="16" y="4" width="9" height="16" rx="2" class="glyph"/><rect x="31" y="4" width="9" height="16" rx="2" class="glyph"/>
+    <path d="M10,12 H16 M25,12 H31 M5,4 C5,-2 36,-2 36,4" class="glyph"/>
+    <text x="20" y="36" text-anchor="middle" class="arch">1D ResNet-18</text>
+  </g>
+
+  <!-- PatchTST glyph. -->
+  <g transform="translate(568 261)">
+    <rect x="0" y="7" width="8" height="10" class="glyph"/><rect x="11" y="7" width="8" height="10" class="glyph"/><rect x="22" y="7" width="8" height="10" class="glyph"/>
+    <path d="M31,12 H37" class="glyph"/>
+    <rect x="38" y="3" width="18" height="18" rx="3" class="glyph"/>
+    <path d="M42,7 L52,17 M52,7 L42,17" class="glyph"/>
+    <text x="28" y="36" text-anchor="middle" class="arch">PatchTST</text>
+  </g>
+
+  <rect x="660" y="228" width="140" height="90" rx="12" class="train-node"/>
+  <text x="730" y="251" text-anchor="middle" class="head-title">feature head Pφ</text>
+  <text x="730" y="272" text-anchor="middle" class="body">trained · f<tspan baseline-shift="sub" font-size="10">pred</tspan>(X)</text>
+  <g transform="translate(695 282)">
+    <rect x="0" y="10" width="12" height="18" rx="2" fill="#285F8F" opacity=".42"/>
+    <rect x="19" y="6" width="12" height="22" rx="2" fill="#285F8F" opacity=".67"/>
+    <rect x="38" y="2" width="12" height="26" rx="2" fill="#285F8F"/>
+    <path d="M53,15 H66" class="glyph" marker-end="url(#arrow-blue)"/>
+  </g>
+
+  <!-- Loss. -->
+  <rect x="900" y="105" width="275" height="155" rx="17" class="loss-node"/>
+  <text x="1037.5" y="135" text-anchor="middle" class="lane brick-text">DESCRIPTOR-PREDICTION LOSS</text>
+  <text x="1037.5" y="178" text-anchor="middle" class="equation">MSE(f<tspan baseline-shift="sub" font-size="15">pred</tspan>, f)</text>
+  <line x1="930" y1="196" x2="1145" y2="196" stroke="#E6C8C2" stroke-width="1"/>
+  <text x="1037.5" y="222" text-anchor="middle" class="body-strong">updates θ and φ only</text>
+  <text x="1037.5" y="242" text-anchor="middle" class="small">target path receives no gradient</text>
+
+  <!-- Transition into downstream evaluation. -->
+  <line x1="20" y1="360" x2="1175" y2="360" stroke="#D7DDE1" stroke-width="1.2"/>
+  <text x="20" y="384" class="lane gold-text">AFTER PRETRAINING</text>
+  <text x="210" y="384" class="body-strong">discard Pφ · keep Eθ · attach a new task head Hψ</text>
+  <text x="1175" y="384" text-anchor="end" class="small">same pretrained encoder · evaluated separately</text>
+
+  <!-- Frozen transfer. -->
+  <rect x="20" y="397" width="550" height="88" rx="14" class="transfer-field"/>
+  <text x="38" y="420" class="lane gold-text">FROZEN ENCODER</text>
+  <rect x="38" y="427" width="152" height="37" rx="9" class="fixed-node"/>
+  <g transform="translate(51 437) scale(.75)" color="#26796F"><use href="#lock-icon" xlink:href="#lock-icon"/></g>
+  <text x="118" y="451" text-anchor="middle" class="body-strong">encoder Eθ</text>
+  <rect x="226" y="427" width="132" height="37" rx="9" class="train-node"/>
+  <circle cx="243" cy="445.5" r="4" fill="#285F8F"/>
+  <text x="292" y="451" text-anchor="middle" class="body-strong">task head Hψ</text>
+  <rect x="398" y="427" width="152" height="37" rx="9" class="node"/>
+  <text x="474" y="445" text-anchor="middle" class="body-strong">task output</text>
+  <text x="474" y="458" text-anchor="middle" class="small">class / heart rate</text>
+  <text x="38" y="480" class="state">θ fixed · train ψ only</text>
+
+  <!-- End-to-end transfer. -->
+  <rect x="600" y="397" width="575" height="88" rx="14" class="transfer-field"/>
+  <text x="618" y="420" class="lane gold-text">END-TO-END FINE-TUNING</text>
+  <rect x="618" y="427" width="152" height="37" rx="9" class="train-node"/>
+  <circle cx="635" cy="445.5" r="4" fill="#285F8F"/>
+  <text x="700" y="451" text-anchor="middle" class="body-strong">encoder Eθ</text>
+  <rect x="806" y="427" width="132" height="37" rx="9" class="train-node"/>
+  <circle cx="823" cy="445.5" r="4" fill="#285F8F"/>
+  <text x="872" y="451" text-anchor="middle" class="body-strong">task head Hψ</text>
+  <rect x="978" y="427" width="177" height="37" rx="9" class="node"/>
+  <text x="1066.5" y="445" text-anchor="middle" class="body-strong">task output</text>
+  <text x="1066.5" y="458" text-anchor="middle" class="small">class / heart rate</text>
+  <text x="618" y="480" class="state">update θ and ψ</text>
 </svg>

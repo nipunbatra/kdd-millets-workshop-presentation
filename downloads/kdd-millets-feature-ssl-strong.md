@@ -309,23 +309,26 @@ footer: KDD MILETS 2026 · Feature-informed SSL
 
 ---
 
-<div class="kicker">Approach · two-path pretraining</div>
+<!-- _class: method-slide -->
+<div class="kicker">Approach · fixed target, trainable encoder</div>
 
-## Pretraining predicts these standardized descriptor targets
+## A fixed TSFEL target trains four alternative encoder backbones
 
 <div class="body top">
-  <img class="method-asset" src="assets/feature-ssl-method-real.svg" alt="Feature-informed SSL with fixed TSFEL target path, learned encoder and predictor, MSE loss, and downstream transfer">
-  <div class="takeaway">The method removes view construction—not inductive bias. Descriptor choice defines what the encoder is asked to retain.</div>
+  <img class="method-asset" src="assets/feature-ssl-method-real.svg" alt="Feature-informed pretraining with a fixed TSFEL target path; one of four alternative trainable encoder backbones; a trainable feature head; and downstream evaluation with either a frozen or fine-tuned encoder">
 </div>
 
-<div class="source">Source: supplied manuscript, §3.1–3.2 and Eqs. 1–3. Fixed target branch and learned prediction branch meet only at the loss.</div>
+<div class="source">Fixed target path; Eθ and Pφ train during pretraining. Pφ is then replaced by a task head; Eθ is evaluated frozen and fine-tuned.</div>
 
 <!--
 [Sources]
-- Supplied workshop manuscript, pp. 2–3, §3.1–3.2 and Eqs. 1–3.
+- Supplied workshop manuscript, pp. 2–3, §3.1–3.4, Eqs. 1–3, and Table 1.
 - Diagram structure was informed by supplied student deck slide 16, then rebuilt as an editable SVG.
 - Small input trace: PPG-DaLiA Subject 1, samples 73,120–73,375 at 32 Hz, from the Edge Impulse subset of the UCI dataset, DOI 10.24432/C53890; subset documentation: https://docs.edgeimpulse.com/tutorials/end-to-end/hr-hrv-estimation .
-- The TSFEL extractor is fixed and its targets may be computed once; encoder E and predictor P are learned during pretraining; P is discarded for downstream transfer.
+- During pretraining, TSFEL extraction and the standardized descriptor target are fixed; encoder Eθ and feature-prediction head Pφ are trained jointly with MSE. The four encoder backbones are alternatives used in separate runs: MLP, MLP-Mixer, 1D ResNet-18, and PatchTST—not an ensemble.
+- After pretraining, the implementation loads the pretrained encoder into a downstream model with a new task head. Frozen evaluation locks Eθ and trains Hψ only; end-to-end fine-tuning updates Eθ and Hψ. The pretraining feature head Pφ is not reused downstream.
+- Implementation verification: `SSL-for-Time-Series` commit 96806c77649e83e6018f704cb0606a8312d50f52, `methods/tsfel15.py` (target standardization and joint encoder/head optimizer) and `core/engine.py` (new downstream head and frozen-encoder switch).
+- The backbone glyphs are schematic family markers, not literal layer-by-layer architectures.
 -->
 
 ---
