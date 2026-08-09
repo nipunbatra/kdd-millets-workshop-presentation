@@ -96,7 +96,7 @@
   <rect x="320" y="75" width="225" height="75" rx="12" class="fixed-node"/>
   <g transform="translate(336 96)" color="#26796F"><use href="#lock-icon" xlink:href="#lock-icon"/></g>
   <text x="365" y="103" class="title">per-channel TSFEL</text>
-  <text x="365" y="126" class="body">statistical · temporal · spectral</text>
+  <text x="432.5" y="126" text-anchor="middle" class="body">statistical · temporal · spectral</text>
   <text x="365" y="143" class="small">fixed · precompute once</text>
   <rect x="575" y="75" width="220" height="75" rx="12" class="fixed-node"/>
   <text x="595" y="103" class="title">standardized f(X)</text>
