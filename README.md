@@ -2,6 +2,8 @@
 
 Zero-dependency static GitHub Pages site for **Feature-Informed Self-Supervised Learning for Time-Series Understanding**.
 
+The hosted 21-slide Marp deck uses progressive disclosure on 17 substantive slides. PDF and PowerPoint downloads intentionally retain the complete, all-visible final state because Marp does not emit native PowerPoint entrance animations.
+
 ## Structure
 
 ```text

@@ -7,6 +7,7 @@ html: true
 title: Feature-Informed Self-Supervised Learning for Time Series Understanding
 description: KDD MILETS 2026 workshop presentation
 footer: KDD MILETS 2026 · Feature-informed SSL
+transition: fade
 ---
 
 <!-- _class: title-slide -->
@@ -51,7 +52,7 @@ footer: KDD MILETS 2026 · Feature-informed SSL
 
 <div class="body top">
   <div class="evidence-lanes">
-    <div class="evidence-lane">
+    <div class="evidence-lane" data-marpit-fragment>
       <div class="lane-head"><span class="lane-name">PPG-DaLiA</span><span class="lane-task">heart-rate regression</span></div>
       <div class="real-plot-frame acquisition-frame ppg-acquisition">
         <img class="acquisition-photo" src="assets/acquisition-optical-wrist-sensor-imagegen-v1.png" alt="Generated acquisition context: a generic optical wrist sensor">
@@ -62,7 +63,7 @@ footer: KDD MILETS 2026 · Feature-informed SSL
       </div>
       <div class="lane-copy"><b>Continuous wrist PPG</b>Reference heart rate still needs synchronized ECG.</div>
     </div>
-    <div class="evidence-lane hhar">
+    <div class="evidence-lane hhar" data-marpit-fragment>
       <div class="lane-head"><span class="lane-name">HHAR</span><span class="lane-task">activity recognition</span></div>
       <div class="real-plot-frame acquisition-frame hhar-acquisition">
         <img class="acquisition-photo" src="assets/acquisition-smartwatch-walking-imagegen-v1.png" alt="Generated acquisition context: a generic smartwatch during walking">
@@ -100,21 +101,25 @@ footer: KDD MILETS 2026 · Feature-informed SSL
     <div class="image-tag">one photographed instance</div>
   </div>
   <div class="vision-views">
-    <div class="view-card"><div class="photo flip"><img src="assets/cat-cc0.jpg" alt="Horizontally flipped cat"></div><div class="label">horizontal flip</div></div>
-    <div class="view-card"><div class="photo crop"><img src="assets/cat-cc0.jpg" alt="Cropped cat"></div><div class="label">crop</div></div>
-    <div class="view-card"><div class="photo color"><img src="assets/cat-cc0.jpg" alt="Color-distorted cat"></div><div class="label">colour distortion</div></div>
-    <div class="view-card claim"><strong>Why it works:</strong> for an object-identity task, the positive views can still depict the same cat.</div>
+    <div class="transformation-grid" data-marpit-fragment>
+      <div class="view-card"><div class="photo flip"><img src="assets/cat-cc0.jpg" alt="Horizontally flipped cat"></div><div class="label">horizontal flip</div></div>
+      <div class="view-card"><div class="photo crop"><img src="assets/cat-cc0.jpg" alt="Cropped cat"></div><div class="label">crop</div></div>
+      <div class="view-card"><div class="photo color"><img src="assets/cat-cc0.jpg" alt="Color-distorted cat"></div><div class="label">colour distortion</div></div>
+      <div class="view-card"><div class="photo blur"><img src="assets/cat-cc0.jpg" alt="Gaussian-blurred cat"></div><div class="label">Gaussian blur</div></div>
+    </div>
+    <div class="view-card claim" data-marpit-fragment><strong>Why it works:</strong> the positive views can still depict the same cat.</div>
   </div>
 </div>
 
-<div class="source">CC0 photograph; every view is generated deterministically from the same pixels.</div>
+<div class="source">CC0 photograph; all four views are deterministic CSS transforms of the same source image.</div>
 
 <!--
 [Sources]
 - Concept adapted from supplied student deck, slides 3–7.
 - Cat photograph: Playing096, “Juvenile orange tabby cat,” Wikimedia Commons, CC0, https://commons.wikimedia.org/wiki/File:Juvenile_orange_tabby_cat.jpg .
-- Crop, flip, and colour transformation were produced in CSS from the same source photograph; no generated image is used.
-- Scientific qualification: transformation validity depends on the learning target. This slide concerns object identity, not every vision task.
+- Flip, crop, colour distortion, and Gaussian blur are deterministic CSS renderings of the same source photograph; no generated image or second photograph is used.
+- Transform selection follows the canonical SimCLR image-augmentation family: random crop/resize (with horizontal flip), colour distortion, and Gaussian blur. Chen et al., “A Simple Framework for Contrastive Learning of Visual Representations,” ICML 2020, PMLR 119:1597–1607, https://proceedings.mlr.press/v119/chen20j.html .
+- Scientific qualification: this is an object-identity illustration. Moderate blur can preserve the cat-class target, but transformation validity is task-dependent and is not assumed for fine-grained, localization, text, or texture-dependent labels.
 -->
 
 ---
@@ -131,17 +136,17 @@ footer: KDD MILETS 2026 · Feature-informed SSL
     <div class="invariance-captions"><span>visual views: object identity can persist</span><span>signal views: temporal meaning can change</span></div>
   </div>
   <div class="invariance-logic">
-    <div class="logic-step">
+    <div class="logic-step" data-marpit-fragment>
       <div class="logic-label">paired-view objective</div>
       <div class="logic-equation">z(x) ≈ z(T(x))</div>
       <p>Encourages reduced sensitivity to view-specific differences.</p>
     </div>
-    <div class="logic-step">
+    <div class="logic-step" data-marpit-fragment>
       <div class="logic-label">required assumption</div>
       <div class="logic-equation">y(x) = y(T(x))</div>
       <p>Requires the transformation to preserve the task target.</p>
     </div>
-    <div class="logic-step failure">
+    <div class="logic-step failure" data-marpit-fragment>
       <div class="logic-label">when the assumption fails</div>
       <div class="logic-equation">y(x) ≠ y(T(x))</div>
       <p>Target-relevant evidence can be attenuated.</p>
@@ -149,7 +154,7 @@ footer: KDD MILETS 2026 · Feature-informed SSL
   </div>
 </div>
 
-<div class="invariance-consequence"><b>For time series, that discarded difference can be the target:</b> temporal order · event presence · amplitude · local morphology</div>
+<div class="invariance-consequence" data-marpit-fragment><b>For time series, that discarded difference can be the target:</b> temporal order · event presence · amplitude · local morphology</div>
 
 <div class="source">Conceptual ImageGen illustration; the next slide applies exact transformations to an authentic PPG-DaLiA window.</div>
 
@@ -173,23 +178,23 @@ footer: KDD MILETS 2026 · Feature-informed SSL
 <div class="body top">
   <img class="real-augmentation" src="assets/augmentation-real-ppg.svg" alt="Authentic PPG-DaLiA window under reversal, masking, and scaling plus jitter">
   <div class="application-strip">
-    <div class="application-item">
+    <div class="application-item" data-marpit-fragment>
       <b>PPG-DaLiA · heart-rate regression</b>
       <strong>Preserve beat interval and dominant frequency</strong>
       <span>Reject T if beat timing or dominant-rate evidence becomes unreliable.</span>
     </div>
-    <div class="application-item">
+    <div class="application-item" data-marpit-fragment>
       <b>HHAR · activity recognition</b>
       <strong>Preserve amplitude, periodicity and transitions</strong>
       <span>Reject T if cadence, intensity or a transition needed for classification is distorted.</span>
     </div>
-    <div class="application-item">
+    <div class="application-item" data-marpit-fragment>
       <b>Illustrative extension · event / anomaly detection</b>
       <strong>Preserve transient presence, duration and order</strong>
       <span>Reject T if it masks, truncates or reorders the candidate event.</span>
     </div>
   </div>
-  <div class="augmentation-rule"><b>Decision rule</b><span>Admit T as a positive-pair transform only when <i>y(x) = y(T(x))</i> and the evidence required for y remains physically plausible.</span></div>
+  <div class="augmentation-rule" data-marpit-fragment><b>Decision rule</b><span>Admit T as a positive-pair transform only when <i>y(x) = y(T(x))</i> and the evidence required for y remains physically plausible.</span></div>
 </div>
 
 <div class="source">Authentic PPG-DaLiA example. Heart-rate and activity tasks are evaluated in this study; event detection is an illustrative extension.</div>
@@ -211,11 +216,11 @@ footer: KDD MILETS 2026 · Feature-informed SSL
 
 ## Each window supplies statistical, temporal, and spectral targets
 
-<div class="family-overview">
+<div class="family-overview" data-marpit-fragment>
   <img src="assets/ppg-descriptor-views.svg" alt="One authentic PPG window viewed through statistical, temporal, and spectral descriptors">
 </div>
 
-<div class="family-method-note"><b>Target construction</b><span>select equal counts across families → compute per channel → concatenate → standardize over the pretraining dataset</span></div>
+<div class="family-method-note" data-marpit-fragment><b>Target construction</b><span>select equal counts across families → compute per channel → concatenate → standardize over the pretraining dataset</span></div>
 
 <div class="source">One authentic PPG-DaLiA window; derived views illustrate what the descriptor families measure, not individual feature importance.</div>
 
@@ -236,8 +241,8 @@ footer: KDD MILETS 2026 · Feature-informed SSL
 ## Walking variance is ≈976× the standing variance
 
 <div class="body top worked-example">
-  <img class="worked-example-asset" src="assets/hhar-statistical-variance-intuition.svg" alt="Authentic HHAR standing and walking accelerometer-x windows mapped to exact population-variance targets">
-  <div class="feature-evidence statistical">
+  <img class="worked-example-asset" data-marpit-fragment src="assets/hhar-statistical-variance-intuition.svg" alt="Authentic HHAR standing and walking accelerometer-x windows mapped to exact population-variance targets">
+  <div class="feature-evidence statistical" data-marpit-fragment>
     <div class="feature-evidence-label">03 · why it may help</div>
     <div class="feature-evidence-copy"><b>Motion-amplitude evidence</b><span>Predicting variance asks the encoder to retain per-axis amplitude spread—a cue for separating dynamic from nearly static windows.</span></div>
     <div class="feature-evidence-task"><span>evaluated downstream task</span><b>HHAR · activity recognition</b></div>
@@ -262,8 +267,8 @@ footer: KDD MILETS 2026 · Feature-informed SSL
 ## Walking shows a much stronger ≈1 s recurrence than standing
 
 <div class="body top worked-example">
-  <img class="worked-example-asset" src="assets/hhar-temporal-autocorrelation-intuition.svg" alt="Authentic HHAR standing and walking accelerometer-x windows mapped to normalized autocorrelation peak targets">
-  <div class="feature-evidence temporal">
+  <img class="worked-example-asset" data-marpit-fragment src="assets/hhar-temporal-autocorrelation-intuition.svg" alt="Authentic HHAR standing and walking accelerometer-x windows mapped to normalized autocorrelation peak targets">
+  <div class="feature-evidence temporal" data-marpit-fragment>
     <div class="feature-evidence-label">03 · why it may help</div>
     <div class="feature-evidence-copy"><b>Cyclic-timing evidence</b><span>Predicting an (r*, τ*) summary asks the encoder to retain recurrence strength and repeat interval—cues for periodic versus stationary activity.</span></div>
     <div class="feature-evidence-task"><span>evaluated downstream task</span><b>HHAR · activity recognition</b></div>
@@ -288,8 +293,8 @@ footer: KDD MILETS 2026 · Feature-informed SSL
 ## Dominant frequency aligns with reference heart rate in two PPG windows
 
 <div class="body top worked-example spectral-example">
-  <img class="worked-example-asset spectral" src="assets/ppg-hr-waveform-spectrum.svg" alt="Two authentic PPG-DaLiA input windows mapped to dominant-frequency targets and compared with ECG-derived reference heart rate">
-  <div class="feature-evidence spectral">
+  <img class="worked-example-asset spectral" data-marpit-fragment src="assets/ppg-hr-waveform-spectrum.svg" alt="Two authentic PPG-DaLiA input windows mapped to dominant-frequency targets and compared with ECG-derived reference heart rate">
+  <div class="feature-evidence spectral" data-marpit-fragment>
     <div class="feature-evidence-label">03 · why it may help</div>
     <div class="feature-evidence-copy"><b>Pulse-rate evidence</b><span>Predicting dominant frequency asks the encoder to retain periodic rate—a cue for heart-rate regression.</span></div>
     <div class="feature-evidence-task"><span>evaluated downstream task</span><b>PPG-DaLiA · HR regression</b></div>
@@ -315,7 +320,7 @@ footer: KDD MILETS 2026 · Feature-informed SSL
 ## A fixed TSFEL target trains four alternative encoder backbones
 
 <div class="body top">
-  <img class="method-asset" src="assets/feature-ssl-method-real.svg" alt="Feature-informed pretraining with a fixed TSFEL target path; one of four alternative trainable encoder backbones; a trainable feature head; and downstream evaluation with either a frozen or fine-tuned encoder">
+  <img class="method-asset" data-marpit-fragment src="assets/feature-ssl-method-real.svg" alt="Feature-informed pretraining with a fixed TSFEL target path; one of four alternative trainable encoder backbones; a trainable feature head; and downstream evaluation with either a frozen or fine-tuned encoder">
 </div>
 
 <div class="source">Fixed target path; Eθ and Pφ train during pretraining. Pφ is then replaced by a task head; Eθ is evaluated frozen and fine-tuned.</div>
@@ -363,50 +368,88 @@ footer: KDD MILETS 2026 · Feature-informed SSL
 
 ---
 
-<!-- _class: experiment-grid-slide -->
-<div class="kicker">Evaluation · full experimental grid</div>
+<!-- _class: matched-settings-slide -->
+<div class="kicker">Evaluation · define matched settings</div>
 
-## The 1,600-run grid enumerates every evaluated combination
+## The design creates 160 matched settings per method
 
-<div class="body top experiment-grid-body">
-  <div class="experiment-inventory">
-    <div class="experiment-factor tasks">
-      <div class="factor-head"><div class="factor-count">2</div><div><div class="factor-label">datasets / tasks</div><div class="factor-sublabel">wearable benchmarks</div></div></div>
-      <div class="task-entry"><strong>PPG-DaLiA</strong><span>heart-rate regression</span><small>MAE ↓ · 15 participants · PPG + ACC</small></div>
-      <div class="task-entry"><strong>HHAR</strong><span>6-class activity recognition</span><small>macro F1 ↑ · 9 users · ACC + GYR</small></div>
+<div class="body top matched-settings-body">
+  <div class="matched-settings-grid">
+    <div class="matched-factor datasets" data-marpit-fragment>
+      <div class="matched-head"><span class="matched-count">2</span><span>datasets / tasks</span></div>
+      <div class="matched-task"><b>PPG-DaLiA</b><span>heart-rate regression</span></div>
+      <div class="matched-task"><b>HHAR</b><span>6-class activity recognition</span></div>
     </div>
-    <div class="experiment-factor backbones">
-      <div class="factor-head"><div class="factor-count">4</div><div><div class="factor-label">encoder backbones</div><div class="factor-sublabel">one per run</div></div></div>
-      <ul class="factor-list"><li>MLP</li><li>MLP-Mixer</li><li>1D ResNet-18</li><li>PatchTST</li></ul>
+    <div class="matched-factor backbones" data-marpit-fragment>
+      <div class="matched-head"><span class="matched-count">4</span><span>backbones · one per run</span></div>
+      <div class="matched-name-list"><span>MLP</span><span>MLP-Mixer</span><span>1D ResNet-18</span><span>PatchTST</span></div>
     </div>
-    <div class="experiment-factor methods">
-      <div class="factor-head"><div class="factor-count">10</div><div><div class="factor-label">pretraining methods</div><div class="factor-sublabel">six baselines + four feature targets</div></div></div>
-      <div class="method-family"><div class="family-label">conventional SSL · 6</div><div class="method-list"><span>SimCLR</span><span>BYOL</span><span>Barlow Twins</span><span>TS2Vec</span><span>SimMTM</span><span>MPM</span></div></div>
-      <div class="method-family feature-target"><div class="family-label">feature-target SSL · 4</div><div class="method-list"><span>TSFEL15</span><span>TSFEL30</span><span>TSFEL45</span><span>TSFEL90</span></div></div>
-    </div>
-    <div class="experiment-factor settings">
-      <div class="factor-head"><div class="factor-count">20</div><div><div class="factor-label">grouped settings</div><div class="factor-sublabel">per dataset–backbone–method</div></div></div>
-      <div class="config-group"><div class="config-title"><b>12</b><span>LR robustness</span></div><p>2 transfer × 2 pretrain LR × 3 fine-tune LR</p><small>frozen / unfrozen · 10⁻³ / 10⁻² · 10⁻⁵ / 10⁻⁴ / 10⁻³</small></div>
-      <div class="config-group"><div class="config-title"><b>4</b><span>label scarcity</span></div><p>2 label fractions × 2 transfer regimes</p><small>5% / 100% · frozen / unfrozen</small></div>
-      <div class="config-group"><div class="config-title"><b>4</b><span>head / pooling</span></div><p>2 prediction heads × 2 pooling rules</p><small>linear / MLP · mean / max</small></div>
-      <div class="grouped-caveat">12 + 4 + 4 grouped studies—not one full-factorial sweep</div>
+    <div class="matched-factor settings" data-marpit-fragment>
+      <div class="matched-head"><span class="matched-count">20</span><span>grouped settings <small>per dataset–backbone–method</small></span></div>
+      <div class="setting-row"><b>12</b><div><strong>LR robustness</strong><span>frozen / unfrozen · pretrain LR 10⁻³ / 10⁻²<br>fine-tune LR 10⁻⁵ / 10⁻⁴ / 10⁻³</span></div></div>
+      <div class="setting-row"><b>4</b><div><strong>Label scarcity</strong><span>5% / 100% labels × frozen / unfrozen</span></div></div>
+      <div class="setting-row"><b>4</b><div><strong>Head / pooling</strong><span>linear / MLP × mean / max</span></div></div>
+      <div class="matched-caveat">12 + 4 + 4 are additive studies—not one full-factorial sweep</div>
     </div>
   </div>
-  <div class="grid-synthesis"><div class="grid-equation"><b>2</b> datasets × <b>4</b> backbones × <b>10</b> methods × <b>(12 + 4 + 4)</b> settings = <strong>1,600 runs</strong></div><div class="grid-denominator">160 runs per method · 80 matched settings per method and task</div></div>
-  <div class="grid-protocol"><b>Matched comparison:</b> hold dataset + backbone + setting fixed → rank all ten methods on the task metric → average ranks within task.</div>
+  <div class="matched-equation" data-marpit-fragment><div><b>2</b> datasets × <b>4</b> backbones × <b>20</b> settings = <strong>160 matched settings per method</strong></div><span>80 in PPG-DaLiA · 80 in HHAR</span></div>
 </div>
 
-<div class="source">Source: supplied manuscript, Table 1 and §3.3–3.5. Grouped studies are additive, not a full-factorial sweep.</div>
+<div class="source">Source: supplied manuscript, Table 1 and §3.3–3.5. Settings are grouped studies, not a full-factorial sweep.</div>
 
 <!--
 [Sources]
-- Supplied workshop manuscript, p. 3, Table 1 and §3.3–3.5: 2 datasets × 4 backbones × 10 methods × 20 grouped configurations = 1,600 training runs.
-- Datasets/tasks: PPG-DaLiA heart-rate regression using retained PPG and accelerometer inputs, evaluated by MAE; HHAR six-class activity recognition using accelerometer and gyroscope inputs, evaluated by macro F1. Cohort counts are 15 participants and 9 users, respectively; Reiss et al. 2019, DOI 10.3390/s19143079 / UCI DOI 10.24432/C53890; Stisen et al. 2015 / UCI DOI 10.24432/C5689X.
-- Backbones are alternatives used in separate runs: MLP, MLP-Mixer, 1D ResNet-18, and PatchTST.
-- The ten methods are Barlow Twins, BYOL, MPM, SimCLR, SimMTM, TS2Vec, TSFEL15, TSFEL30, TSFEL45, and TSFEL90.
-- Table 1 defines three additive studies per dataset–backbone–method pair: 12 learning-rate robustness settings, 4 label-scarcity settings, and 4 head/pooling settings. These are grouped studies, not a Cartesian product across every listed factor.
-- Each method contributes 160 runs overall and 80 matched settings per task. Within a matched setting, methods are ranked by macro F1 for HHAR or MAE for PPG-DaLiA; ranks are averaged separately by task and lower mean rank is better.
-- The supplied student deck slide 18 informed the factor-ordering concept; this flat inventory was rebuilt in the current Marp visual language.
+- Supplied workshop manuscript, p. 3, Table 1 and §3.3–3.5: two datasets, four alternative backbones, ten methods, and 20 grouped settings per dataset–backbone–method tuple yield 1,600 training runs.
+- Backbones: MLP, MLP-Mixer, 1D ResNet-18, and PatchTST.
+- Table 1 setting groups: 12 LR-robustness settings = frozen/unfrozen × pretraining LR 10⁻³/10⁻² × fine-tuning LR 10⁻⁵/10⁻⁴/10⁻³; 4 label-scarcity settings = 5%/100% labels × frozen/unfrozen; 4 head/pooling settings = linear/MLP head × mean/max pooling.
+- Arithmetic: 2 datasets × 4 backbones × 20 settings = 160 matched settings per method across both tasks, or 80 per task.
+- Boundary: the 20 settings are three additive studies (12 + 4 + 4), not one full-factorial crossing of every listed factor.
+- The supplied student deck slide 18 and its staged continuation informed the 160-settings-first reveal; copy and arithmetic are reconciled to the active manuscript.
+-->
+
+---
+
+<!-- _class: within-setting-slide -->
+<div class="kicker">Evaluation · within-setting ranking</div>
+
+## Each matched setting compares the same ten methods
+
+<div class="body top within-setting-body">
+  <div class="within-setting-flow">
+    <div class="comparison-field fixed" data-marpit-fragment>
+      <div class="comparison-label">hold fixed</div>
+      <div class="fixed-list"><span>dataset</span><span>backbone</span><span>grouped setting</span></div>
+      <small>same task and evaluation condition</small>
+    </div>
+    <div class="comparison-arrow">→</div>
+    <div class="comparison-field methods" data-marpit-fragment>
+      <div class="comparison-label">vary one factor · pretraining method</div>
+      <div class="method-group"><b>conventional SSL · 6</b><div class="method-chip-grid baselines"><span>SimCLR</span><span>BYOL</span><span>Barlow Twins</span><span>TS2Vec</span><span>SimMTM</span><span>MPM</span></div></div>
+      <div class="method-group feature"><b>feature-target SSL · 4</b><div class="method-chip-grid targets"><span>TSFEL15</span><span>TSFEL30</span><span>TSFEL45</span><span>TSFEL90</span></div></div>
+    </div>
+    <div class="comparison-arrow">→</div>
+    <div class="comparison-field metrics" data-marpit-fragment>
+      <div class="comparison-label">score with the task metric</div>
+      <div class="metric-row"><span>PPG-DaLiA</span><b>MAE ↓</b></div>
+      <div class="metric-row"><span>HHAR</span><b>macro F1 ↑</b></div>
+      <div class="rank-band">rank methods 1–10</div>
+    </div>
+  </div>
+  <div class="within-setting-summary" data-marpit-fragment>
+    <div class="run-equation"><b>160</b> matched settings × <b>10</b> methods = <strong>1,600 training runs</strong></div>
+    <div class="aggregation-strip"><b>Within each task:</b> average a method's ranks over 80 settings · lower mean rank is better</div>
+  </div>
+</div>
+
+<div class="source">Source: supplied manuscript, Table 1 and §3.3–3.5. Methods are ranked only within matched settings.</div>
+
+<!--
+[Sources]
+- Supplied workshop manuscript, p. 3, Table 1 and §3.3–3.5: two datasets, four alternative backbones, ten methods, and 20 grouped settings per dataset–backbone–method tuple yield 1,600 training runs.
+- The ten methods are SimCLR, BYOL, Barlow Twins, TS2Vec, SimMTM, MPM, TSFEL15, TSFEL30, TSFEL45, and TSFEL90.
+- Arithmetic: 160 matched settings × 10 methods = 1,600 training runs; each method contributes 80 matched settings within each task.
+- Ranking protocol: methods are ranked only within a fixed experimental setting using MAE for PPG-DaLiA and macro F1 for HHAR; ranks are averaged separately within each task and lower mean rank is better.
+- The supplied student deck slide 18 and its staged continuation informed the 160-settings → ten-method comparison → 1,600-run reveal; copy and arithmetic are reconciled to the active manuscript.
 -->
 
 ---
@@ -418,9 +461,8 @@ footer: KDD MILETS 2026 · Feature-informed SSL
 <div class="body top result-split">
   <img class="result-figure" src="assets/ppg-rank-distribution.svg" alt="PPG-DaLiA rank distributions across ten methods">
   <div class="result-callout">
-    <div class="eyebrow">mean rank ↓</div><div class="value">3.95</div><div class="detail"><strong>TSFEL15</strong> has the lowest mean rank over 80 matched PPG-DaLiA settings.</div>
-    <div class="divider"></div>
-    <div class="eyebrow">observed mean MAE ↓</div><div class="comparison"><strong>TSFEL30 · 11.58 BPM</strong><br>Barlow · 11.59 BPM<br><span class="note">No significance test is reported for the 0.01 BPM difference.</span></div>
+    <div class="result-primary" data-marpit-fragment><div class="eyebrow">mean rank ↓</div><div class="value">3.95</div><div class="detail"><strong>TSFEL15</strong> has the lowest mean rank over 80 matched PPG-DaLiA settings.</div></div>
+    <div class="result-secondary" data-marpit-fragment><div class="divider"></div><div class="eyebrow">observed mean MAE ↓</div><div class="comparison"><strong>TSFEL30 · 11.58 BPM</strong><br>Barlow · 11.59 BPM<br><span class="note">No significance test is reported for the 0.01 BPM difference.</span></div></div>
   </div>
 </div>
 
@@ -443,9 +485,8 @@ footer: KDD MILETS 2026 · Feature-informed SSL
 <div class="body top result-split">
   <img class="result-figure" src="assets/hhar-rank-distribution.svg" alt="HHAR rank distributions across ten methods">
   <div class="result-callout">
-    <div class="eyebrow">mean rank ↓</div><div class="value">3.76</div><div class="detail"><strong>TSFEL45</strong> has the lowest mean rank over 80 matched HHAR settings.</div>
-    <div class="divider"></div>
-    <div class="eyebrow">mean macro F1 ↑</div><div class="value" style="font-size:34px">0.79</div><div class="comparison">Barlow / SimCLR mean rank: <strong>4.43</strong></div>
+    <div class="result-primary" data-marpit-fragment><div class="eyebrow">mean rank ↓</div><div class="value">3.76</div><div class="detail"><strong>TSFEL45</strong> has the lowest mean rank over 80 matched HHAR settings.</div></div>
+    <div class="result-secondary" data-marpit-fragment><div class="divider"></div><div class="eyebrow">mean macro F1 ↑</div><div class="value" style="font-size:34px">0.79</div><div class="comparison">Barlow / SimCLR mean rank: <strong>4.43</strong></div></div>
   </div>
 </div>
 
@@ -465,8 +506,8 @@ footer: KDD MILETS 2026 · Feature-informed SSL
 ## In frozen evaluation, a TSFEL variant leads on both tasks
 
 <div class="body top">
-  <img class="full-result" src="assets/frozen-transfer.svg" alt="Best feature-target and conventional baseline ranks under frozen and unfrozen transfer for HHAR and PPG-DaLiA">
-  <div class="takeaway">Each comparison selects the best member of each method family within that task and transfer regime.</div>
+  <img class="full-result" data-marpit-fragment src="assets/frozen-transfer.svg" alt="Best feature-target and conventional baseline ranks under frozen and unfrozen transfer for HHAR and PPG-DaLiA">
+  <div class="takeaway" data-marpit-fragment>Each comparison selects the best member of each method family within that task and transfer regime.</div>
 </div>
 
 <div class="source">Source: supplied manuscript, Tables 4–5 and §4.3.1. Only internally consistent average-rank columns are used.</div>
@@ -487,8 +528,8 @@ footer: KDD MILETS 2026 · Feature-informed SSL
 ## On PPG-DaLiA, feature targets lead across all four backbones
 
 <div class="body top">
-  <img class="full-result" src="assets/ppg-backbone-generalization.svg" alt="Per-backbone normalized rank comparison on PPG-DaLiA">
-  <div class="takeaway">The regression advantage is not confined to one encoder family; HHAR is more backbone dependent.</div>
+  <img class="full-result" data-marpit-fragment src="assets/ppg-backbone-generalization.svg" alt="Per-backbone normalized rank comparison on PPG-DaLiA">
+  <div class="takeaway" data-marpit-fragment>The regression advantage is not confined to one encoder family; HHAR is more backbone dependent.</div>
 </div>
 
 <div class="source">Source: supplied manuscript, §4.3.3. Lower normalized rank is better.</div>
@@ -533,9 +574,9 @@ footer: KDD MILETS 2026 · Feature-informed SSL
 <div class="body top ablation-layout">
   <img src="assets/feature-count-ablation.svg" alt="Mean rank across TSFEL descriptor counts for PPG-DaLiA and HHAR">
   <div class="ablation-callout">
-    <div class="ablation-item"><div class="count">15</div><div class="label"><strong>PPG-DaLiA</strong><br>lowest mean rank: 3.95</div></div>
-    <div class="ablation-item hhar"><div class="count">45</div><div class="label"><strong>HHAR</strong><br>lowest mean rank: 3.76</div></div>
-    <div class="small">More targets do not improve mean rank monotonically.</div>
+    <div class="ablation-item" data-marpit-fragment><div class="count">15</div><div class="label"><strong>PPG-DaLiA</strong><br>lowest mean rank: 3.95</div></div>
+    <div class="ablation-item hhar" data-marpit-fragment><div class="count">45</div><div class="label"><strong>HHAR</strong><br>lowest mean rank: 3.76</div></div>
+    <div class="small" data-marpit-fragment>More targets do not improve mean rank monotonically.</div>
   </div>
 </div>
 
@@ -565,10 +606,10 @@ footer: KDD MILETS 2026 · Feature-informed SSL
     <div class="label">not established</div>
     <h3>Mechanism and scope</h3>
     <ul>
-      <li>Statistical, temporal, and spectral families are not disentangled.</li>
-      <li>No principled rule selects 15 / 30 / 45 / 90 targets.</li>
-      <li>Long-context, forecasting, anomaly, and cross-domain transfer are untested.</li>
-      <li>Augmentation-induced semantic loss is illustrated, not directly measured.</li>
+      <li data-marpit-fragment>Statistical, temporal, and spectral families are not disentangled.</li>
+      <li data-marpit-fragment>No principled rule selects 15 / 30 / 45 / 90 targets.</li>
+      <li data-marpit-fragment>Long-context, forecasting, anomaly, and cross-domain transfer are untested.</li>
+      <li data-marpit-fragment>Augmentation-induced semantic loss is illustrated, not directly measured.</li>
     </ul>
   </div>
 </div>
