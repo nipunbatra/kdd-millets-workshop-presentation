@@ -78,7 +78,6 @@ transition: fade
   </div>
 </div>
 
-<div class="source">Generated acquisition context; signal overlays are authentic PPG-DaLiA and HHAR records.</div>
 
 <!--
 [Sources]
@@ -113,7 +112,6 @@ transition: fade
   </div>
 </div>
 
-<div class="source">CC0 photograph; all four views are deterministic CSS transforms of the same source image.</div>
 
 <!--
 [Sources]
@@ -158,7 +156,6 @@ transition: fade
 
 <div class="invariance-consequence" data-marpit-fragment><b>For time series, that discarded difference can be the target:</b> temporal order · event presence · amplitude · local morphology</div>
 
-<div class="source">Conceptual ImageGen illustration; the next slide applies exact transformations to an authentic PPG-DaLiA window.</div>
 
 <!--
 [Sources]
@@ -199,7 +196,6 @@ transition: fade
   <div class="augmentation-rule" data-marpit-fragment><b>Decision rule</b><span>Admit T as a positive-pair transform only when <i>y(x) = y(T(x))</i> and the evidence required for y remains physically plausible.</span></div>
 </div>
 
-<div class="source">Authentic PPG-DaLiA example. Heart-rate and activity tasks are evaluated in this study; event detection is an illustrative extension.</div>
 
 <!--
 [Sources]
@@ -224,7 +220,6 @@ transition: fade
 
 <div class="family-method-note" data-marpit-fragment><b>Target construction</b><span>select equal counts across families → compute per channel → concatenate → standardize over the pretraining dataset</span></div>
 
-<div class="source">One authentic PPG-DaLiA window; derived views illustrate what the descriptor families measure, not individual feature importance.</div>
 
 <!--
 [Sources]
@@ -251,7 +246,6 @@ transition: fade
   </div>
 </div>
 
-<div class="source">Authentic per-channel example; activity labels explain relevance but are not used during FI-SSL pretraining.</div>
 
 <!--
 [Sources]
@@ -278,7 +272,6 @@ transition: fade
   </div>
 </div>
 
-<div class="source">The same authentic windows reveal a different property: recurrence rather than amplitude spread.</div>
 
 <!--
 [Sources]
@@ -305,7 +298,6 @@ transition: fade
   </div>
 </div>
 
-<div class="source">Selected authentic explanatory windows; not a representative error analysis or an individual-feature ablation.</div>
 
 <!--
 [Sources]
@@ -327,7 +319,6 @@ transition: fade
   <img class="method-asset" data-marpit-fragment src="assets/feature-ssl-method-real.svg" alt="Feature-informed pretraining with a fixed TSFEL target path; one of four alternative trainable encoder backbones; a trainable feature head; and downstream evaluation with either a frozen or fine-tuned encoder">
 </div>
 
-<div class="source">Fixed target path; Eθ and Pφ train during pretraining. Pφ is then replaced by a task head; Eθ is evaluated frozen and fine-tuned.</div>
 
 <!--
 [Sources]
@@ -359,7 +350,6 @@ transition: fade
   </div>
 </div>
 
-<div class="source">Sources: supplied manuscript §3.4; PPG-DaLiA and HHAR official dataset records.</div>
 
 <!--
 [Sources]
@@ -400,7 +390,6 @@ transition: fade
   <div class="matched-equation" data-marpit-fragment><div><b>2</b> datasets × <b>4</b> backbones × <b>20</b> settings = <strong>160 matched settings per method</strong></div><span>80 in PPG-DaLiA · 80 in HHAR</span></div>
 </div>
 
-<div class="source">Source: supplied manuscript, Table 1 and §3.3–3.5. Settings are grouped studies, not a full-factorial sweep.</div>
 
 <!--
 [Sources]
@@ -444,7 +433,6 @@ transition: fade
   </div>
 </div>
 
-<div class="source">Source: supplied manuscript, Table 1 and §3.3–3.5. Methods are ranked only within matched settings.</div>
 
 <!--
 [Sources]
@@ -469,7 +457,6 @@ transition: fade
   </div>
 </div>
 
-<div class="source">Source: supplied manuscript, Figure 1a, Table 2, and §4.1. Lower rank and lower MAE are better.</div>
 
 <!--
 [Sources]
@@ -493,7 +480,6 @@ transition: fade
   </div>
 </div>
 
-<div class="source">Source: supplied manuscript, Figure 1b, Table 3, and §4.2. Lower rank and higher macro F1 are better.</div>
 
 <!--
 [Sources]
@@ -513,7 +499,6 @@ transition: fade
   <div class="takeaway" data-marpit-fragment>Each comparison selects the best member of each method family within that task and transfer regime.</div>
 </div>
 
-<div class="source">Source: supplied manuscript, Tables 4–5 and §4.3.1. Only internally consistent average-rank columns are used.</div>
 
 <!--
 [Sources]
@@ -535,7 +520,6 @@ transition: fade
   <div class="takeaway" data-marpit-fragment>The regression advantage is not confined to one encoder family; HHAR is more backbone dependent.</div>
 </div>
 
-<div class="source">Source: supplied manuscript, §4.3.3. Lower normalized rank is better.</div>
 
 <!--
 [Sources]
@@ -559,7 +543,6 @@ transition: fade
   <div class="compute-note"><span><b>Preferred direction:</b> lower left</span><span>Proxy ≠ wall-clock time, FLOPs, memory, energy, or carbon.</span></div>
 </div>
 
-<div class="source">Source: supplied manuscript, Figure 2 and §4.4. Original point geometry is preserved.</div>
 
 <!--
 [Sources]
@@ -583,7 +566,6 @@ transition: fade
   </div>
 </div>
 
-<div class="source">Source: supplied manuscript, Tables 2–3 and §4.3.2. Lower mean rank is better.</div>
 
 <!--
 [Sources]
@@ -618,7 +600,6 @@ transition: fade
   </div>
 </div>
 
-<div class="source">Source: supplied manuscript, §7 Limitations.</div>
 
 <!--
 [Sources]
