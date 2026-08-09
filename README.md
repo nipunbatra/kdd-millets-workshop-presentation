@@ -27,7 +27,7 @@ Populate `downloads/` with exactly:
 | Site path | Artifact |
 |---|---|
 | `downloads/kdd-millets-feature-ssl-strong.md` | Canonical Marp source |
-| `downloads/kdd-millets-feature-ssl-strong.html` | Portable HTML export |
+| `downloads/kdd-millets-feature-ssl-strong.html` | HTML presentation export; keep sibling `assets/` and `fonts/` when relocating it |
 | `downloads/kdd-millets-feature-ssl-strong.pdf` | PDF export |
 | `downloads/kdd-millets-feature-ssl-strong.pptx` | PowerPoint export |
 | `downloads/source.zip` | Marp source, theme, notes, and supporting assets |
