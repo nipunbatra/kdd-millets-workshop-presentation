@@ -57,7 +57,7 @@ transition: fade
       <div class="real-plot-frame acquisition-frame ppg-acquisition">
         <img class="acquisition-photo" src="assets/acquisition-optical-wrist-sensor-imagegen-v1.png" alt="Generated acquisition context: a generic optical wrist sensor">
         <div class="acquisition-data-card">
-          <div class="acquisition-data-head"><span>AUTHENTIC 8 S WRIST PPG</span><span>32 Hz · REFERENCE HR 100.35 BPM</span></div>
+          <div class="acquisition-data-head"><span>AUTHENTIC 8 S WRIST PPG</span><span>32 Hz · REFERENCE HR ≈100 BPM</span></div>
           <img class="acquisition-ppg-trace" src="assets/ppg-title-strip.svg" alt="Authentic eight-second PPG-DaLiA wrist PPG window">
         </div>
       </div>
@@ -84,7 +84,9 @@ transition: fade
 [Sources]
 - Supplied workshop manuscript, p. 3, §3.4, evaluated datasets and downstream tasks.
 - PPG overlay: PPG-DaLiA Subject 1, samples 73,120–73,375, 2018-06-29 09:22:57–09:23:04.968750, 32 Hz, median ECG-derived reference HR 100.35 BPM, from the Edge Impulse CSV subset of the UCI PPG-DaLiA dataset (UCI DOI: 10.24432/C53890; subset documentation: https://docs.edgeimpulse.com/tutorials/end-to-end/hr-hrv-estimation). Reference-heart-rate provenance follows Reiss et al., Sensors 2019, DOI 10.3390/s19143079.
+- Audience-facing display rounds the reference HR to ≈100 BPM; the exact median reference is 100.35 BPM.
 - HHAR windows: UCI Heterogeneity Activity Recognition dataset, DOI 10.24432/C5689X, CC BY 4.0; `Watch_accelerometer.csv`, user a, model gear, device gear_1; stand Index 2980–3482 and walk Index 13306–13808.
+- The HHAR inset displays magnitude standard deviations as ≈0.09 and ≈3.1; the underlying asset values are 0.092 and 3.140 device-reported units.
 - Acquisition-context images were generated with OpenAI ImageGen on 2026-08-09. They are conceptual only and do not depict PPG-DaLiA or HHAR participants, study devices, or acquisition sessions. Exact prompts are recorded in `provenance/imagegen-acquisition-prompts.txt`.
 - Claim scope: this slide motivates why self-supervision is useful; it does not assert a particular unlabeled:labeled ratio for either benchmark.
 -->
@@ -204,7 +206,7 @@ transition: fade
 - Supplied manuscript, p. 1, Abstract and §1, motivation concerning jitter, scaling, masking, reversal, and task-mismatched invariance.
 - Supplied manuscript, p. 3, §3.4: the evaluated downstream tasks are heart-rate regression on PPG-DaLiA and activity recognition on HHAR.
 - Real signal: PPG-DaLiA Subject 1, samples 73,120–73,375, 8 s at 32 Hz, UCI DOI 10.24432/C53890; Edge Impulse subset documentation: https://docs.edgeimpulse.com/tutorials/end-to-end/hr-hrv-estimation .
-- Exact operations: x̃(t) denotes the linearly detrended, within-window-scaled display signal; reverse sample order; zero samples 96–135 (3.00 ≤ t < 4.25 s); and 1.25 x̃(t) + 0.15 sin(2π·6t). All panels use the same 0–8 s and −3.25–3.25 axes.
+- Audience-facing labels name the operations directly. Exact operations: x̃(t) denotes the linearly detrended, within-window-scaled display signal; reverse sample order; zero samples 96–135 (3.00 ≤ t < 4.25 s); and 1.25 x̃(t) + 0.15 sin(2π·6t). All panels use the same 0–8 s and −3.25–3.25 axes.
 - The downstream preservation test is explanatory and conditional: heart-rate regression requires recoverable rate/timing evidence; activity recognition can depend on amplitude, periodicity, and temporal transitions; event/anomaly detection is included only as an illustrative downstream extension and was not evaluated in the paper.
 - The paper motivates, but does not directly test, semantic loss caused by these operations. No claim is made that every transformed window changes its downstream label.
 -->
@@ -229,7 +231,7 @@ transition: fade
 - Supplied workshop manuscript, pp. 2–3, §3.1–3.2: TSFEL targets span statistical, temporal, and spectral domains; examples named by the manuscript are mean, variance, and skewness; zero-crossing rate, autocorrelation, and temporal entropy; and spectral centroid, dominant frequency, and spectral entropy.
 - The manuscript applies the feature extractor independently to each channel, concatenates the per-channel descriptors, selects equal numbers from the three domains for the 15/30/45/90-feature variants, and standardizes targets at dataset level before MSE regression.
 - Real signal: PPG-DaLiA Subject 1, samples 73,120–73,375, 8 s at 32 Hz, UCI DOI 10.24432/C53890; subset documentation: https://docs.edgeimpulse.com/tutorials/end-to-end/hr-hrv-estimation .
-- Derived values in the graphic: standard deviation 59.9 a.u.; IQR 99.2; autocorrelation peak at 0.594 s; 27 centered zero crossings; periodogram peak 1.672 Hz (approximately 100.3 cycles/min). Processing and provenance are documented in `provenance/ppg-intuition-assets.md`.
+- Audience-facing values are rounded. Exact values for this authentic window: median reference HR 100.35 BPM; detrended population standard deviation 59.8992378764 a.u. (59.899238 in the provenance table); IQR 99.2 a.u.; strongest local autocorrelation peak lag 0.594 s; 27 centered zero crossings; periodogram peak 1.671875 Hz (= 100.3125 cycles/min). Processing and provenance are documented in `provenance/ppg-intuition-assets.md`.
 - Interpretive boundary: the listed descriptors are manuscript examples of each family. The study does not ablate individual descriptors or establish which feature is causally responsible for downstream performance.
 -->
 
@@ -238,10 +240,10 @@ transition: fade
 <!-- _class: feature-worked -->
 <div class="kicker">Feature intuition · statistical target</div>
 
-## Walking variance is ≈976× the standing variance
+## Walking variance is ≈1,000× the standing variance
 
 <div class="body top worked-example">
-  <img class="worked-example-asset" data-marpit-fragment src="assets/hhar-statistical-variance-intuition.svg" alt="Authentic HHAR standing and walking accelerometer-x windows mapped to exact population-variance targets">
+  <img class="worked-example-asset" data-marpit-fragment src="assets/hhar-statistical-variance-intuition.svg" alt="Authentic HHAR standing and walking accelerometer-x windows mapped to rounded population-variance targets">
   <div class="feature-evidence statistical" data-marpit-fragment>
     <div class="feature-evidence-label">03 · why it may help</div>
     <div class="feature-evidence-copy"><b>Motion-amplitude evidence</b><span>Predicting variance asks the encoder to retain per-axis amplitude spread—a cue for separating dynamic from nearly static windows.</span></div>
@@ -255,7 +257,8 @@ transition: fade
 [Sources]
 - Supplied workshop manuscript, pp. 2–3, §3.1–3.2: descriptors are extracted independently per channel, concatenated, standardized, and predicted with MSE; variance is named as a statistical example.
 - UCI Heterogeneity Activity Recognition dataset, DOI 10.24432/C5689X, CC BY 4.0; authentic matched windows from `Watch_accelerometer.csv`, user a, model gear, device gear_1; standing Index 2980–3482 and walking Index 13306–13808; 503 samples per window.
-- Displayed input is the authentic smartwatch accelerometer x-axis on a common scale. Population Var(a_x)=(1/N)Σ_i(a_x,i−mean(a_x))²: standing 0.0094445432; walking 9.2145266048; ratio 975.646, shown as approximately 976×. Exact rows and values: `data/hhar-matched-standing-walking-window-data.csv`, `data/hhar-matched-standing-walking-window-features.csv`, and `provenance/hhar-feature-intuition-xaxis.txt`.
+- Rounded input annotations use the same authentic HHAR windows. Exact per-channel statistics: standing mean −9.114997203777335 and population standard deviation 0.09718303952992044; walking mean −9.885236338170971 and population standard deviation 3.035543872979065.
+- Displayed input is the authentic smartwatch accelerometer x-axis on a common scale. Population Var(a_x)=(1/N)Σ_i(a_x,i−mean(a_x))²: standing 0.0094445432; walking 9.2145266048; ratio 975.646. The slide rounds these to ≈0.0094, ≈9.2, and ≈1,000×. Exact rows and values: `data/hhar-matched-standing-walking-window-data.csv`, `data/hhar-matched-standing-walking-window-features.csv`, and `provenance/hhar-feature-intuition-xaxis.txt`.
 - Interpretive boundary: this example explains one deterministic statistical target. The paper does not establish variance as individually causal, and the activity labels are not used during pretraining.
 -->
 
@@ -281,7 +284,8 @@ transition: fade
 [Sources]
 - Supplied workshop manuscript, pp. 2–3, §3.2: temporal descriptor examples include zero-crossing rate, autocorrelation, and temporal entropy.
 - UCI Heterogeneity Activity Recognition dataset, DOI 10.24432/C5689X, CC BY 4.0; same matched accelerometer-x windows as the statistical example: `Watch_accelerometer.csv`, user a, model gear, device gear_1; standing Index 2980–3482 and walking Index 13306–13808.
-- Explanatory calculation: interpolate timestamp-irregular a_x samples to each window's median sample-rate grid, subtract the mean, and compute normalized positive-lag autocorrelation r[k]=Σ_i c[i]c[i+k]/Σ_i c[i]². The displayed summary is the pair (r*,τ*), where τ*=argmax r(τ) over 0.3–2.0 s and r*=r(τ*). Standing: r*=0.2176483 at τ*=0.667990 s. Walking: r*=0.7502005 at τ*=1.0255195 s. Procedure and exact values: `provenance/hhar-feature-intuition-xaxis.txt`.
+- Rounded input annotations use the same authentic HHAR windows. Exact per-channel statistics: standing mean −9.114997203777335 and population standard deviation 0.09718303952992044; walking mean −9.885236338170971 and population standard deviation 3.035543872979065.
+- Explanatory calculation: interpolate timestamp-irregular a_x samples to each window's median sample-rate grid, subtract the mean, and compute normalized positive-lag autocorrelation r[k]=Σ_i c[i]c[i+k]/Σ_i c[i]². The displayed summary is the pair (r*,τ*), where τ*=argmax r(τ) over 0.3–2.0 s and r*=r(τ*). Standing: r*=0.2176483 at τ*=0.667990 s, displayed as r≈0.22 at τ≈0.67 s. Walking: r*=0.7502005 at τ*=1.0255195 s, displayed as r≈0.75 at τ≈1.03 s. Procedure and exact values: `provenance/hhar-feature-intuition-xaxis.txt`.
 - Interpretive boundary: the displayed pair is an explanatory autocorrelation-derived summary, not a claim about the exact implementation of every TSFEL function or individual-feature importance. Activity labels are not used during FI-SSL pretraining.
 -->
 
@@ -307,7 +311,7 @@ transition: fade
 [Sources]
 - Supplied workshop manuscript, pp. 2–3, §3.2 and §3.4: spectral examples include spectral centroid, dominant frequency, and spectral entropy; PPG-DaLiA is evaluated for continuous heart-rate regression.
 - PPG-DaLiA Subject 1 windows from the authentic Edge Impulse CSV subset of the UCI dataset, DOI 10.24432/C53890; 32 Hz; subset documentation: https://docs.edgeimpulse.com/tutorials/end-to-end/hr-hrv-estimation .
-- Lower-rate window: samples 20,832–21,087, median reference HR 51.58 BPM; explanatory periodogram peak 0.859375 Hz = 51.5625 cycles/min. Higher-rate window: samples 73,120–73,375, median reference HR 100.35 BPM; peak 1.671875 Hz = 100.3125 cycles/min.
+- Lower-rate window: samples 20,832–21,087, median reference HR 51.58 BPM; explanatory periodogram peak 0.859375 Hz = 51.5625 cycles/min. These are displayed as ≈52 BPM, ≈0.86 Hz, and ≈52 cycles/min. Higher-rate window: samples 73,120–73,375, median reference HR 100.35 BPM; peak 1.671875 Hz = 100.3125 cycles/min, displayed as ≈100 BPM, ≈1.67 Hz, and ≈100 cycles/min.
 - Processing: least-squares linear detrending, Hann taper, 2,048-point zero-padded one-sided FFT, and maximum power in 0.5–3.2 Hz. Exact rows and processing: `data/ppg-intuition-windows.csv` and `provenance/ppg-intuition-assets.md`.
 - Interpretive boundary: the windows were selected for pedagogical agreement. The visual is not a representative error analysis, an individual-feature ablation, or a claim about the exact implementation of every TSFEL spectral descriptor.
 -->
@@ -362,6 +366,7 @@ transition: fade
 - Supplied workshop manuscript, p. 3, §3.4.
 - PPG-DaLiA: Reiss et al. 2019, DOI 10.3390/s19143079; UCI DOI 10.24432/C53890. The study retained PPG and accelerometer channels for heart-rate regression.
 - HHAR: Stisen et al. 2015 / UCI DOI 10.24432/C5689X; smartphone and smartwatch accelerometer/gyroscope recordings from 9 users and six activities. Displayed windows: `Watch_accelerometer.csv`, user a, model gear, device gear_1; stand Index 2980–3482 and walk Index 13306–13808.
+- The HHAR inset displays magnitude standard deviations as ≈0.09 and ≈3.1; the underlying asset values are 0.092 and 3.140 device-reported units.
 - Empatica E4 render: official Empatica product page, https://www.empatica.com/research/e4/ .
 - Signal strips are authentic dataset samples with provenance recorded in `provenance/ppg-intuition-assets.md` and `provenance/hhar-authentic-pair-manifest.txt`.
 -->
@@ -585,6 +590,7 @@ transition: fade
 - Supplied workshop manuscript, Tables 2–3 and p. 6, §4.3.2.
 - Exact PPG-DaLiA mean ranks for 15/30/45/90 descriptors: 3.95, 4.15, 6.62, 5.88.
 - Exact HHAR mean ranks: 4.64, 4.56, 3.76, 4.37.
+- The plot retains exact point positions but omits duplicated point-value labels; the two task minima remain explicit in the right-hand callouts.
 - Graphic is an editable SVG reconstructed from those exact table values. No trendline is fitted.
 -->
 
@@ -639,7 +645,7 @@ transition: fade
   </div>
   <div class="closing-boundary">A complement to augmentation and reconstruction—not a universal replacement.</div>
   </div>
-  <div class="closing-visual"><img src="assets/ppg-descriptor-views.svg" alt="Authentic PPG window shown through complementary descriptor views"></div>
+  <div class="closing-visual"><img src="assets/ppg-descriptor-summary.svg" alt="Authentic PPG window shown through statistical, temporal, and spectral descriptor views"></div>
 </div>
 
 <div class="closing-contact">nipun.batra@iitgn.ac.in · Sustainability Lab, IIT Gandhinagar</div>
@@ -648,6 +654,6 @@ transition: fade
 [Sources]
 - Supplied workshop manuscript, p. 7, §8 Conclusion.
 - Task-level ranks: Tables 2–3. Frozen-transfer best-of-family ranks: Tables 4–5. Network-pass comparison: Figure 2 and §4.4.
-- Closing visual: PPG-DaLiA Subject 1, samples 73,120–73,375 at 32 Hz, from the Edge Impulse subset of the UCI dataset, DOI 10.24432/C53890; subset documentation: https://docs.edgeimpulse.com/tutorials/end-to-end/hr-hrv-estimation . Derived distribution, autocorrelation, and periodogram values are documented in `provenance/ppg-intuition-assets.md`.
+- Closing visual: PPG-DaLiA Subject 1, samples 73,120–73,375 at 32 Hz, from the Edge Impulse subset of the UCI dataset, DOI 10.24432/C53890; subset documentation: https://docs.edgeimpulse.com/tutorials/end-to-end/hr-hrv-estimation . The closing variant intentionally omits numeric descriptor annotations; exact derived distribution, autocorrelation, and periodogram values are documented in `provenance/ppg-intuition-assets.md`.
 - The boundary statement mirrors the manuscript's conclusion that descriptor prediction is complementary to augmentation- and reconstruction-based approaches rather than universally superior.
 -->
