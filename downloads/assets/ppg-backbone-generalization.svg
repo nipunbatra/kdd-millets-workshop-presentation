@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-label="Per-backbone PPG-DaLiA average-rank comparison">
+  <style>
+    text { font-family: 'Work Sans', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif; fill: #17302F; }
+    .axis { font-size: 16px; fill: #62716F; font-weight: 500; }
+    .axis-label { font-size: 19px; fill: #62716F; font-weight: 600; }
+    .method { font-size: 21px; font-weight: 650; }
+    .method-feature { fill: #0B6B53; }
+    .method-baseline { fill: #17302F; }
+    .value { font-size: 17px; font-weight: 700; }
+    .small { font-size: 15px; fill: #62716F; font-weight: 500; }
+    .panel { font-size: 24px; font-weight: 700; }
+    .row-label { font-size: 17px; font-weight: 700; letter-spacing: .06em; }
+  </style>
+  <text x="285" y="42" class="axis-label">Within-backbone average rank · 1 = best</text>
+  <path d="M 377 55 H 299" fill="none" stroke="#0B6B53" stroke-width="2" stroke-linecap="round"/>
+  <path d="M 299 55 l 9 -5 v 10 z" fill="#0B6B53"/>
+  <text x="388" y="60" class="small">better</text>
+  <text x="1170" y="92" text-anchor="middle" class="axis" font-weight="700">RANK GAP</text>
+  <line x1="285.00" y1="100" x2="285.00" y2="615" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
+  <text x="285.00" y="88" text-anchor="middle" class="axis">1</text>
+  <line x1="445.00" y1="100" x2="445.00" y2="615" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
+  <text x="445.00" y="88" text-anchor="middle" class="axis">2</text>
+  <line x1="605.00" y1="100" x2="605.00" y2="615" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
+  <text x="605.00" y="88" text-anchor="middle" class="axis">3</text>
+  <line x1="765.00" y1="100" x2="765.00" y2="615" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
+  <text x="765.00" y="88" text-anchor="middle" class="axis">4</text>
+  <line x1="925.00" y1="100" x2="925.00" y2="615" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
+  <text x="925.00" y="88" text-anchor="middle" class="axis">5</text>
+  <line x1="1085.00" y1="100" x2="1085.00" y2="615" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
+  <text x="1085.00" y="88" text-anchor="middle" class="axis">6</text>
+  <rect x="16" y="146" width="1238" height="88" rx="12" fill="#FFFFFF"/>
+  <text x="30" y="197" class="method">MLP</text>
+  <line x1="445.00" y1="190" x2="797.00" y2="190" stroke="#DDE5E2" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="445.00" cy="190" r="12" fill="#0B6B53" stroke="#FFFFFF" stroke-width="3"/>
+  <circle cx="797.00" cy="190" r="11" fill="#6F8290" stroke="#FFFFFF" stroke-width="3"/>
+  <text x="445.00" y="168" text-anchor="middle" class="value" fill="#0B6B53">TSFEL 2.0</text>
+  <text x="797.00" y="224" text-anchor="middle" class="value" fill="#6F8290">closest SSL 4.2</text>
+  <text x="1170" y="196" text-anchor="middle" class="value" fill="#0B6B53">−2.2</text>
+  <rect x="16" y="271" width="1238" height="88" rx="12" fill="#F7F9F8"/>
+  <text x="30" y="322" class="method">MLP-Mixer</text>
+  <line x1="669.00" y1="315" x2="1053.00" y2="315" stroke="#DDE5E2" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="669.00" cy="315" r="12" fill="#0B6B53" stroke="#FFFFFF" stroke-width="3"/>
+  <circle cx="1053.00" cy="315" r="11" fill="#6F8290" stroke="#FFFFFF" stroke-width="3"/>
+  <text x="669.00" y="293" text-anchor="middle" class="value" fill="#0B6B53">TSFEL 3.4</text>
+  <text x="1053.00" y="349" text-anchor="middle" class="value" fill="#6F8290">closest SSL 5.8</text>
+  <text x="1170" y="321" text-anchor="middle" class="value" fill="#0B6B53">−2.4</text>
+  <rect x="16" y="396" width="1238" height="88" rx="12" fill="#FFFFFF"/>
+  <text x="30" y="447" class="method">ResNet-18</text>
+  <line x1="637.00" y1="440" x2="861.00" y2="440" stroke="#DDE5E2" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="637.00" cy="440" r="12" fill="#0B6B53" stroke="#FFFFFF" stroke-width="3"/>
+  <circle cx="861.00" cy="440" r="11" fill="#6F8290" stroke="#FFFFFF" stroke-width="3"/>
+  <text x="637.00" y="418" text-anchor="middle" class="value" fill="#0B6B53">TSFEL 3.2</text>
+  <text x="861.00" y="474" text-anchor="middle" class="value" fill="#6F8290">closest SSL 4.6</text>
+  <text x="1170" y="446" text-anchor="middle" class="value" fill="#0B6B53">−1.4</text>
+  <rect x="16" y="521" width="1238" height="88" rx="12" fill="#F7F9F8"/>
+  <text x="30" y="572" class="method">PatchTST</text>
+  <line x1="701.00" y1="565" x2="733.00" y2="565" stroke="#DDE5E2" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="701.00" cy="565" r="12" fill="#0B6B53" stroke="#FFFFFF" stroke-width="3"/>
+  <circle cx="733.00" cy="565" r="11" fill="#6F8290" stroke="#FFFFFF" stroke-width="3"/>
+  <path d="M 701.00 551 v -18 h -48" fill="none" stroke="#0B6B53" stroke-width="1.5"/>
+  <text x="646.00" y="538" text-anchor="end" class="value" fill="#0B6B53">TSFEL 3.6</text>
+  <path d="M 733.00 579 v 18 h 48" fill="none" stroke="#6F8290" stroke-width="1.5"/>
+  <text x="788.00" y="604" class="value" fill="#6F8290">closest SSL 3.8</text>
+  <text x="1170" y="571" text-anchor="middle" class="value" fill="#0B6B53">−0.2</text>
+  <circle cx="300" cy="672" r="7" fill="#0B6B53"/>
+  <text x="316" y="678" class="small">best TSFEL variant</text>
+  <circle cx="520" cy="672" r="7" fill="#6F8290"/>
+  <text x="536" y="678" class="small">closest conventional SSL method</text>
+  <text x="1170" y="678" text-anchor="middle" class="small">negative = TSFEL better</text>
+</svg>

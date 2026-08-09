@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-label="Frozen and unfrozen transfer comparison on HHAR and PPG-DaLiA">
+  <style>
+    text { font-family: 'Work Sans', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif; fill: #17302F; }
+    .axis { font-size: 16px; fill: #62716F; font-weight: 500; }
+    .axis-label { font-size: 19px; fill: #62716F; font-weight: 600; }
+    .method { font-size: 21px; font-weight: 650; }
+    .method-feature { fill: #0B6B53; }
+    .method-baseline { fill: #17302F; }
+    .value { font-size: 17px; font-weight: 700; }
+    .small { font-size: 15px; fill: #62716F; font-weight: 500; }
+    .panel { font-size: 24px; font-weight: 700; }
+    .row-label { font-size: 17px; font-weight: 700; letter-spacing: .06em; }
+  </style>
+  <text x="354" y="45" text-anchor="middle" class="panel">HHAR</text>
+  <text x="118" y="77" class="axis">average rank · 1 = best</text>
+  <line x1="118.00" y1="105" x2="118.00" y2="604" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
+  <text x="118.00" y="98" text-anchor="middle" class="axis">2</text>
+  <line x1="212.40" y1="105" x2="212.40" y2="604" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
+  <text x="212.40" y="98" text-anchor="middle" class="axis">3</text>
+  <line x1="306.80" y1="105" x2="306.80" y2="604" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
+  <text x="306.80" y="98" text-anchor="middle" class="axis">4</text>
+  <line x1="401.20" y1="105" x2="401.20" y2="604" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
+  <text x="401.20" y="98" text-anchor="middle" class="axis">5</text>
+  <line x1="495.60" y1="105" x2="495.60" y2="604" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
+  <text x="495.60" y="98" text-anchor="middle" class="axis">6</text>
+  <line x1="590.00" y1="105" x2="590.00" y2="604" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
+  <text x="590.00" y="98" text-anchor="middle" class="axis">7</text>
+  <rect x="30" y="146" width="577" height="166" rx="16" fill="#EDF7F3" stroke="#CFE9DF" stroke-width="1.5"/>
+  <rect x="30" y="416" width="577" height="166" rx="16" fill="#F7F9F8"/>
+  <text x="45" y="172" class="row-label" fill="#0B6B53">FROZEN</text>
+  <line x1="182.19" y1="230" x2="308.69" y2="230" stroke="#B8DACE" stroke-width="8" stroke-linecap="round" opacity="1"/>
+  <circle cx="182.19" cy="230" r="13" fill="#0B6B53" stroke="#FFFFFF" stroke-width="3" opacity="1"/>
+  <circle cx="308.69" cy="230" r="12" fill="#6F8290" stroke="#FFFFFF" stroke-width="3" opacity="1"/>
+  <text x="182.19" y="206" text-anchor="middle" class="value" fill="#0B6B53" opacity="1">TSFEL-45 2.68</text>
+  <text x="308.69" y="268" text-anchor="middle" class="value" fill="#6F8290" opacity="1">BYOL 4.02</text>
+  <rect x="550" y="208" width="80" height="44" rx="22" fill="#0B6B53" opacity="1"/>
+  <text x="590" y="237" text-anchor="middle" font-size="18" font-weight="750" fill="#FFFFFF">−1.34</text>
+  <text x="45" y="442" class="row-label" fill="#62716F">UNFROZEN</text>
+  <line x1="272.82" y1="500" x2="297.36" y2="500" stroke="#DDE5E2" stroke-width="5" stroke-linecap="round" opacity="0.72"/>
+  <circle cx="272.82" cy="500" r="10" fill="#0B6B53" stroke="#FFFFFF" stroke-width="3" opacity="0.72"/>
+  <circle cx="297.36" cy="500" r="9" fill="#6F8290" stroke="#FFFFFF" stroke-width="3" opacity="0.72"/>
+  <path d="M 272.82 486 v -21 h -34" fill="none" stroke="#0B6B53" stroke-width="1.5" opacity="0.72"/>
+  <text x="232.82" y="470" text-anchor="end" class="value" fill="#0B6B53" opacity="0.72">TSFEL-90 3.64</text>
+  <path d="M 297.36 514 v 21 h 34" fill="none" stroke="#6F8290" stroke-width="1.5" opacity="0.72"/>
+  <text x="337.36" y="542" class="value" fill="#6F8290" opacity="0.72">Barlow 3.90</text>
+  <rect x="550" y="478" width="80" height="44" rx="22" fill="#D9E0DE" opacity="0.72"/>
+  <text x="590" y="507" text-anchor="middle" font-size="18" font-weight="750" fill="#62716F">−0.26</text>
+  <text x="944" y="45" text-anchor="middle" class="panel">PPG-DaLiA</text>
+  <text x="708" y="77" class="axis">average rank · 1 = best</text>
+  <line x1="708.00" y1="105" x2="708.00" y2="604" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
+  <text x="708.00" y="98" text-anchor="middle" class="axis">2</text>
+  <line x1="802.40" y1="105" x2="802.40" y2="604" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
+  <text x="802.40" y="98" text-anchor="middle" class="axis">3</text>
+  <line x1="896.80" y1="105" x2="896.80" y2="604" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
+  <text x="896.80" y="98" text-anchor="middle" class="axis">4</text>
+  <line x1="991.20" y1="105" x2="991.20" y2="604" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
+  <text x="991.20" y="98" text-anchor="middle" class="axis">5</text>
+  <line x1="1085.60" y1="105" x2="1085.60" y2="604" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
+  <text x="1085.60" y="98" text-anchor="middle" class="axis">6</text>
+  <line x1="1180.00" y1="105" x2="1180.00" y2="604" stroke="#DDE5E2" stroke-width="1" stroke-dasharray="4 6"/>
+  <text x="1180.00" y="98" text-anchor="middle" class="axis">7</text>
+  <rect x="620" y="146" width="577" height="166" rx="16" fill="#EDF7F3" stroke="#CFE9DF" stroke-width="1.5"/>
+  <rect x="620" y="416" width="577" height="166" rx="16" fill="#F7F9F8"/>
+  <text x="635" y="172" class="row-label" fill="#0B6B53">FROZEN</text>
+  <line x1="845.82" y1="230" x2="932.67" y2="230" stroke="#B8DACE" stroke-width="8" stroke-linecap="round" opacity="1"/>
+  <circle cx="845.82" cy="230" r="13" fill="#0B6B53" stroke="#FFFFFF" stroke-width="3" opacity="1"/>
+  <circle cx="932.67" cy="230" r="12" fill="#6F8290" stroke="#FFFFFF" stroke-width="3" opacity="1"/>
+  <text x="845.82" y="206" text-anchor="middle" class="value" fill="#0B6B53" opacity="1">TSFEL-15 3.46</text>
+  <text x="932.67" y="268" text-anchor="middle" class="value" fill="#6F8290" opacity="1">Barlow 4.38</text>
+  <rect x="1140" y="208" width="80" height="44" rx="22" fill="#0B6B53" opacity="1"/>
+  <text x="1180" y="237" text-anchor="middle" font-size="18" font-weight="750" fill="#FFFFFF">−0.92</text>
+  <text x="635" y="442" class="row-label" fill="#62716F">UNFROZEN</text>
+  <line x1="882.64" y1="500" x2="1039.34" y2="500" stroke="#DDE5E2" stroke-width="5" stroke-linecap="round" opacity="0.72"/>
+  <circle cx="882.64" cy="500" r="10" fill="#0B6B53" stroke="#FFFFFF" stroke-width="3" opacity="0.72"/>
+  <circle cx="1039.34" cy="500" r="9" fill="#6F8290" stroke="#FFFFFF" stroke-width="3" opacity="0.72"/>
+  <text x="882.64" y="476" text-anchor="middle" class="value" fill="#0B6B53" opacity="0.72">TSFEL-30 3.85</text>
+  <text x="1039.34" y="538" text-anchor="middle" class="value" fill="#6F8290" opacity="0.72">MPM 5.51</text>
+  <rect x="1140" y="478" width="80" height="44" rx="22" fill="#D9E0DE" opacity="0.72"/>
+  <text x="1180" y="507" text-anchor="middle" font-size="18" font-weight="750" fill="#62716F">−1.66</text>
+  <circle cx="385" cy="670" r="7" fill="#0B6B53"/>
+  <text x="401" y="676" class="small">feature-target representation</text>
+  <circle cx="676" cy="670" r="7" fill="#6F8290"/>
+  <text x="692" y="676" class="small">best conventional SSL baseline</text>
+  <text x="925" y="676" class="small">Δ mean rank = TSFEL − baseline · negative is better</text>
+</svg>
