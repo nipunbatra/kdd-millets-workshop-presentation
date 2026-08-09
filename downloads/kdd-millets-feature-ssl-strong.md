@@ -206,28 +206,26 @@ footer: KDD MILETS 2026 · Feature-informed SSL
 
 ---
 
-<!-- _class: concept-bridge -->
-<div class="kicker">Self-supervision · deterministic targets</div>
+<!-- _class: concept-bridge feature-family-slide -->
+<div class="kicker">Approach intuition · feature targets</div>
 
-## Each window supplies its own deterministic target
+## Each window supplies statistical, temporal, and spectral targets
 
-<div class="bridge-layout">
-  <div>
-    <div class="bridge-equation">x <span class="arrow">↦</span> f(x)</div>
-    <div class="bridge-copy">The supervision is computed from the observed window itself. No annotation is added.</div>
-  </div>
-  <div class="bridge-points">
-    <div class="bridge-point"><div class="no">01</div><div><b>No human label</b><span>The target is extracted automatically.</span></div></div>
-    <div class="bridge-point"><div class="no">02</div><div><b>No augmented view</b><span>The model sees the measured window.</span></div></div>
-    <div class="bridge-point"><div class="no">03</div><div><b>No negative pair</b><span>Training is direct feature regression.</span></div></div>
-  </div>
+<div class="family-overview">
+  <img src="assets/ppg-descriptor-views.svg" alt="One authentic PPG window viewed through statistical, temporal, and spectral descriptors">
 </div>
+
+<div class="family-method-note"><b>Target construction</b><span>select equal counts across families → compute per channel → concatenate → standardize over the pretraining dataset</span></div>
+
+<div class="source">One authentic PPG-DaLiA window; derived views illustrate what the descriptor families measure, not individual feature importance.</div>
 
 <!--
 [Sources]
-- Supplied workshop manuscript, pp. 2–3, §3.1–3.2 and Eqs. 1–3.
-- The formulation x ↦ f(x) is a compact restatement of the manuscript's fixed TSFEL target construction.
-- Diagram is native HTML/CSS and contains no external asset.
+- Supplied workshop manuscript, pp. 2–3, §3.1–3.2: TSFEL targets span statistical, temporal, and spectral domains; examples named by the manuscript are mean, variance, and skewness; zero-crossing rate, autocorrelation, and temporal entropy; and spectral centroid, dominant frequency, and spectral entropy.
+- The manuscript applies the feature extractor independently to each channel, concatenates the per-channel descriptors, selects equal numbers from the three domains for the 15/30/45/90-feature variants, and standardizes targets at dataset level before MSE regression.
+- Real signal: PPG-DaLiA Subject 1, samples 73,120–73,375, 8 s at 32 Hz, UCI DOI 10.24432/C53890; subset documentation: https://docs.edgeimpulse.com/tutorials/end-to-end/hr-hrv-estimation .
+- Derived values in the graphic: standard deviation 59.9 a.u.; IQR 99.2; autocorrelation peak at 0.594 s; 27 centered zero crossings; periodogram peak 1.672 Hz (approximately 100.3 cycles/min). Processing and provenance are documented in `provenance/ppg-intuition-assets.md`.
+- Interpretive boundary: the listed descriptors are manuscript examples of each family. The study does not ablate individual descriptors or establish which feature is causally responsible for downstream performance.
 -->
 
 ---
